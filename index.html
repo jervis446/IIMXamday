@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#18213A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IIMXamday">
+<title>IIMXamday: Term V exam calendar</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAIAAABt+uBvAAACX0lEQVR4nO2asUoDQRCGE7ESH0DBQgURxMY2Fj6ID+FD+ASWPoAPYqGFjY2kCYhFwFoQa4vF47y9zb87t7s3k/wfKS6bITv3ZW73hst072g2IWG2xk5AOxQEoCAABQEoCEBBAAoCUBCAggAUBKAgAAUBKAhAQYDtEl/6enfYHF/cfJSYotp0+Suona7/1tx0vMQAFASgIMDQRfrn+twb+46IyQiebufhTfztckGFTzsnLlWZJuElZshOgyxniSCLdhyCzLlIA5IF2S0fR2r++Svo9GV3xVtz0xXpxUpLqTkd1yAABQEoCLBxgr5u75PiN05QKhQEoCAABQGSbxRTFznrsIIAFASgIAAFAfJ38/PF0h2cnRxoCxMwTf2n/ef7U+ijJss2fsajhLXZP75c8WkHXmKAbIJ6f0l/fJSwIbCCABQEyCYotC52xkcJGwIrCJBzm3fovw9K2ubzC9LPOtwHPc76n3+GxsuhUZCz4LsIjRdFnaD2+ccclya/oPli6V6ysKvnf39z6q2aTkz8pAKUNqsraqRjx0yzmrd78mukd3yjezHfUchaUfQKUoJeQaFtvjJKm9XIG8UKzarGXszf1GO2+ZhJHbZ7sZAL6Cge271Y+8xjjkujTtDk7/xD23zlzV6joEn0jWIFlArSA5+sApQ2q9nD2qxDs8oHh2agIAAFAZQ2q3qerGpsVsuFOWw3qxWw3axqI1lQkn6FpObPCgJIBNktIkHmwgqy6EiWc/Iu1sHEpjbk5xwqaO3hIg2gIAAFASgIQEEACgJQEICCABQEoCAABQEoCEBBgF+/G0SMg7TE/AAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F5; --panel:#FFFFFF; --ink:#18213A; --muted:#5E667B; --line:#D5DAE3;
+  --teal:#0E7C66; --teal-soft:#DDF0EA; --amber:#B7791F; --amber-soft:#FBEFD9;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121726; --panel:#1B2236; --ink:#E9ECF3; --muted:#9AA3B8; --line:#2E3750;
+    --teal:#4CC2A6; --teal-soft:#16362F; --amber:#E7B25A; --amber-soft:#3A2E17;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121726; --panel:#1B2236; --ink:#E9ECF3; --muted:#9AA3B8; --line:#2E3750;
+  --teal:#4CC2A6; --teal-soft:#16362F; --amber:#E7B25A; --amber-soft:#3A2E17;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:16px;line-height:1.5;font-feature-settings:"tnum" 1}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 64px}
+.brand{display:flex;align-items:center;gap:10px;margin:0 0 28px;font-weight:800;font-size:20px;letter-spacing:-0.01em}
+.brand img{border-radius:10px}
+h1{font-size:clamp(30px,6vw,46px);line-height:1.05;font-weight:800;letter-spacing:-0.02em;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 32px;max-width:56ch}
+.form{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+label.field{flex:1 1 280px;display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+input{font:inherit;font-size:24px;font-weight:600;letter-spacing:0.04em;padding:14px 16px;border-radius:10px;
+  border:2px solid var(--line);background:var(--panel);color:var(--ink);width:100%}
+input:focus{outline:none;border-color:var(--teal)}
+button,.btn{font:inherit;font-weight:600;font-size:15px;border-radius:10px;padding:12px 18px;cursor:pointer;
+  border:2px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.form button{align-self:flex-end;height:60px;padding:0 24px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.err{color:#C0392B;font-weight:600;margin:10px 0 0;min-height:1.5em}
+#result{margin-top:28px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 24px}
+.chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel)}
+.next{background:var(--amber-soft);border-left:5px solid var(--amber);padding:16px 18px;border-radius:0 12px 12px 0;margin-bottom:22px}
+.next strong{display:block;font-size:20px;line-height:1.25}
+.next span{color:var(--muted);font-size:14px}
+.sub-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:30px}
+.sub-box h2{font-size:18px;margin:0 0 4px}
+.sub-box p{margin:0 0 14px;color:var(--muted);font-size:14px;max-width:62ch}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+h3{font-size:15px;font-weight:600;color:var(--muted);margin:0 0 10px}
+ol.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ex{display:grid;grid-template-columns:78px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.date{text-align:center;line-height:1}
+.date b{display:block;font-size:34px;font-weight:800;letter-spacing:-0.03em}
+.date small{font-size:13px;color:var(--muted);font-weight:600}
+.ex .name{font-weight:600}
+.ex .meta{font-size:14px;color:var(--muted)}
+.tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--teal-soft);color:var(--teal);margin-left:6px;white-space:nowrap}
+.tag.soon{background:var(--amber-soft);color:var(--amber)}
+.ex a.add{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;white-space:nowrap;border:1px solid var(--line);padding:8px 10px;border-radius:8px}
+.ex.past{opacity:.55}
+details{margin-top:24px}
+summary{cursor:pointer;font-weight:600;color:var(--muted);padding:6px 0}
+.made{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 12px}
+.heart{color:#D6336C}
+.install{margin:0 0 12px}
+footer{margin-top:40px;font-size:13px;color:var(--muted);max-width:62ch}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s}
+.toast.on{opacity:1}
+@media (max-width:520px){
+  .ex{grid-template-columns:60px 1fr;gap:12px}
+  .ex a.add{grid-column:2;justify-self:start}
+  .date b{font-size:28px}
+  .form button{width:100%;height:52px}
+}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="brand"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAIAAABt+uBvAAACX0lEQVR4nO2asUoDQRCGE7ESH0DBQgURxMY2Fj6ID+FD+ASWPoAPYqGFjY2kCYhFwFoQa4vF47y9zb87t7s3k/wfKS6bITv3ZW73hst072g2IWG2xk5AOxQEoCAABQEoCEBBAAoCUBCAggAUBKAgAAUBKAhAQYDtEl/6enfYHF/cfJSYotp0+Suona7/1tx0vMQAFASgIMDQRfrn+twb+46IyQiebufhTfztckGFTzsnLlWZJuElZshOgyxniSCLdhyCzLlIA5IF2S0fR2r++Svo9GV3xVtz0xXpxUpLqTkd1yAABQEoCLBxgr5u75PiN05QKhQEoCAABQGSbxRTFznrsIIAFASgIAAFAfJ38/PF0h2cnRxoCxMwTf2n/ef7U+ijJss2fsajhLXZP75c8WkHXmKAbIJ6f0l/fJSwIbCCABQEyCYotC52xkcJGwIrCJBzm3fovw9K2ubzC9LPOtwHPc76n3+GxsuhUZCz4LsIjRdFnaD2+ccclya/oPli6V6ysKvnf39z6q2aTkz8pAKUNqsraqRjx0yzmrd78mukd3yjezHfUchaUfQKUoJeQaFtvjJKm9XIG8UKzarGXszf1GO2+ZhJHbZ7sZAL6Cge271Y+8xjjkujTtDk7/xD23zlzV6joEn0jWIFlArSA5+sApQ2q9nD2qxDs8oHh2agIAAFAZQ2q3qerGpsVsuFOWw3qxWw3axqI1lQkn6FpObPCgJIBNktIkHmwgqy6EiWc/Iu1sHEpjbk5xwqaO3hIg2gIAAFASgIQEEACgJQEICCABQEoCAABQEoCEBBgF+/G0SMg7TE/AAAAABJRU5ErkJggg==" alt="" width="40" height="40"><span>IIMXamday</span></div>
+  <h1>Your Term V exams, in your calendar</h1>
+  <p class="sub">EMP MMS Batch 02, IIM Indore. Enter your roll number to see only the exams for courses you are enrolled in, then subscribe so dates stay current when the schedule changes.</p>
+
+  <div id="f" class="form">
+    <label class="field" for="roll">Roll number
+      <input id="roll" name="roll" placeholder="2025MMS2006" inputmode="text" autocapitalize="characters" spellcheck="false" aria-describedby="err">
+    </label>
+    <button type="button" id="go">Show my exams</button>
+  </div>
+  <p class="err" id="err" role="alert"></p>
+
+  <section id="result" hidden></section>
+
+  <footer>
+    <p class="made">Made with <span class="heart" aria-label="love">&#10084;</span> by Adarsh</p>
+    <p id="installRow" class="install" hidden><button type="button" id="installBtn" class="btn ghost">Install app</button></p>
+    <p id="iosHint" hidden>On iPhone, tap Share, then Add to Home Screen to install this app.</p>
+    Exam dates are tentative, as published in the Term V schedule. Calendar events are 75 minutes, matching one session slot. Where the schedule gives no start time, the Session I slot (9:00 AM) is used and marked. All times are IST.
+  </footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const STUDENTS={"2025MMS2003":["BFA","BMA","GTM","ISE","MIP","PBM","SP","TSB"],"2025MMS2004":["BFA","CMABN","DMS","EAIS","GTM","ISE","MIP","TSB"],"2025MMS2007":["BFA","CMABN","CRM","DMS","EAIS","GTM","ISE","TSB"],"2025MMS2010":["BFA","BMA","CMABN","EAIS","GTM","ISE","SSCM","TSB"],"2025MMS2014":["BFA","CMABN","GTM","ISE","MIP","PBM","SP","TSB"],"2025MMS2016":["BFA","CMABN","CRM","DMS","EAIS","GTM","SP","SSCM"],"2025MMS2017":["BFA","BMA","CMABN","CRM","EAIS","GTM","ISE","MIP"],"2025MMS2018":["BFA","CMABN","EAIS","ISE","MIP","PBM","SP","TSB"],"2025MMS2019":["BFA","BMA","CMABN","GTM","ISE","MIP","SP","SSCM"],"2025MMS2021":["BFA","BMA","CMABN","DMS","GTM","MIP","SP","SSCM"],"2025MMS2022":["BFA","CMABN","GTM","ISE","MIP","PBM","SP","SSCM"],"2025MMS2028":["BFA","BMA","CMABN","CRM","DMS","EAIS","GTM","TSB"],"2025MMS2032":["BFA","CMABN","CRM","DMS","EAIS","ISE","SSCM","TSB"],"2025MMS2033":["BFA","BMA","CRM","EAIS","GTM","MIP","SSCM","TSB"],"2025MMS2034":["BFA","CMABN","CRM","EAIS","GTM","MIP","PBM","TSB"],"2025MMS2037":["BFA","CMABN","CRM","DMS","GTM","PBM","SP","SSCM"],"2025MMS2038":["BFA","BMA","CMABN","DMS","EAIS","ISE","MIP","TSB"],"2025MMS2039":["BFA","BMA","CMABN","CRM","GTM","ISE","MIP","TSB"],"2025MMS2040":["BFA","BMA","CMABN","CRM","DMS","EAIS","ISE","TSB"],"2025MMS2042":["BFA","CMABN","DMS","EAIS","GTM","ISE","MIP","SSCM"],"2025MMS2043":["BFA","CMABN","CRM","DMS","EAIS","GTM","SP","SSCM"],"2025MMS2044":["BFA","BMA","DMS","GTM","MIP","PBM","SP","SSCM"],"2025MMS2045":["BFA","BMA","CMABN","CRM","DMS","PBM","SP","SSCM"],"2025MMS2047":["BFA","BMA","CMABN","DMS","MIP","PBM","SP","TSB"],"2025MMS2048":["BFA","CMABN","DMS","EAIS","ISE","MIP","PBM","TSB"],"2025MMS2049":["BFA","BMA","CMABN","CRM","GTM","ISE","SP","SSCM"],"2025MMS2051":["BFA","BMA","EAIS","GTM","ISE","MIP","SP","TSB"],"2025MMS2056":["BFA","BMA","CMABN","EAIS","GTM","ISE","SP","TSB"],"2025MMS2057":["BFA","CMABN","CRM","EAIS","GTM","ISE","SP","TSB"],"2025MMS2059":["BFA","BMA","CMABN","CRM","EAIS","GTM","ISE","TSB"],"2025MMS2061":["BFA","BMA","CMABN","DMS","GTM","ISE","MIP","TSB"],"2025MMS2064":["BFA","BMA","GTM","ISE","MIP","SP","SSCM","TSB"],"2025MMS2065":["BFA","BMA","CMABN","EAIS","GTM","ISE","MIP","SP"],"2025MMS2076":["BFA","BMA","CMABN","GTM","MIP","SP","SSCM","TSB"],"2025MMS2078":["BFA","BMA","CRM","DMS","EAIS","GTM","MIP","SP"],"2025MMS2080":["BFA","CMABN","CRM","EAIS","ISE","PBM","SP","TSB"],"2025MMS2081":["BFA","BMA","CRM","DMS","GTM","ISE","MIP","SP"],"2025MMS2084":["BFA","BMA","CMABN","DMS","MIP","PBM","SP","TSB"],"2025MMS2085":["BFA","CMABN","CRM","DMS","EAIS","MIP","SSCM","TSB"],"2025MMS2086":["BFA","BMA","CRM","EAIS","GTM","MIP","SP","SSCM"],"2025MMS2088":["BFA","BMA","CMABN","EAIS","ISE","SP","SSCM","TSB"],"2025MMS2089":["BFA","CRM","DMS","EAIS","GTM","MIP","PBM","SP"],"2025MMS2097":["BFA","CMABN","CRM","DMS","EAIS","GTM","SP","SSCM"],"2025MMS2101":["BFA","CMABN","EAIS","GTM","ISE","MIP","SSCM","TSB"],"2025MMS2103":["BFA","CMABN","CRM","EAIS","MIP","SP","SSCM","TSB"],"2025MMS2105":["BFA","BMA","CMABN","EAIS","GTM","ISE","PBM","SP"],"2025MMS2110":["BFA","BMA","CMABN","EAIS","ISE","PBM","SSCM","TSB"],"2025MMS2111":["BFA","BMA","CMABN","EAIS","GTM","ISE","PBM","SSCM"],"2025MMS2112":["BFA","CMABN","GTM","ISE","MIP","PBM","SP","SSCM"],"2025MMS2113":["BFA","BMA","DMS","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2114":["BFA","CMABN","CRM","DMS","EAIS","GTM","MIP","SSCM"],"2025MMS2115":["BFA","BMA","CMABN","CRM","DMS","GTM","MIP","SSCM"],"2025MMS2116":["BFA","CMABN","DMS","EAIS","ISE","MIP","SP","SSCM"],"2025MMS2117":["BFA","BMA","CMABN","GTM","ISE","MIP","SP","SSCM"],"2025MMS2124":["BFA","CMABN","CRM","DMS","EAIS","ISE","SSCM","TSB"],"2025MMS2125":["BFA","DMS","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2127":["BFA","BMA","CMABN","DMS","GTM","MIP","PBM","SSCM"],"2025MMS2131":["BFA","BMA","CMABN","CRM","GTM","ISE","MIP","SP"],"2025MMS2135":["BFA","BMA","CMABN","GTM","ISE","MIP","SP","TSB"],"2025MMS2139":["BFA","BMA","CMABN","DMS","EAIS","GTM","ISE","MIP"],"2025MMS2140":["BFA","BMA","CMABN","GTM","ISE","MIP","SP","SSCM"],"2025MMS2146":["BFA","CMABN","DMS","EAIS","MIP","PBM","SP","SSCM"],"2025MMS2147":["BFA","CMABN","CRM","EAIS","GTM","ISE","SP","TSB"],"2025MMS2148":["BFA","BMA","CMABN","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2149":["BFA","CMABN","DMS","EAIS","ISE","MIP","SP","TSB"],"2025MMS2157":["BFA","BMA","CRM","DMS","EAIS","PBM","SP","TSB"],"2025MMS2159":["BFA","CMABN","CRM","EAIS","GTM","ISE","SP","TSB"],"2025MMS2160":["BFA","BMA","CMABN","CRM","EAIS","GTM","ISE","TSB"],"2025MMS2161":["BFA","BMA","CMABN","EAIS","MIP","PBM","SP","TSB"],"2025MMS2162":["BFA","BMA","CMABN","CRM","GTM","ISE","SP","SSCM"],"2025MMS2163":["BFA","BMA","CMABN","CRM","DMS","GTM","SP","SSCM"],"2025MMS2164":["BFA","CMABN","DMS","GTM","ISE","MIP","PBM","SP"],"2025MMS2167":["BFA","BMA","CMABN","EAIS","GTM","ISE","SSCM","TSB"],"2025MMS2168":["BFA","CMABN","DMS","GTM","MIP","PBM","SP","SSCM"],"2025MMS2169":["BFA","BMA","CMABN","DMS","GTM","PBM","SP","SSCM"],"2025MMS2174":["BFA","CMABN","CRM","DMS","GTM","MIP","SP","SSCM"],"2025MMS2177":["BFA","CMABN","CRM","EAIS","GTM","ISE","SP","TSB"],"2025MMS2180":["BFA","BMA","CMABN","DMS","GTM","ISE","MIP","PBM"],"2025MMS2181":["BFA","BMA","CMABN","GTM","ISE","MIP","SP","TSB"],"2025MMS2182":["BFA","CMABN","CRM","DMS","EAIS","GTM","MIP","TSB"],"2025MMS2184":["BFA","CMABN","CRM","EAIS","MIP","PBM","SP","SSCM"],"2025MMS2186":["BFA","BMA","CMABN","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2189":["BFA","BMA","DMS","GTM","MIP","PBM","SP","SSCM"],"2025MMS2193":["BFA","BMA","CMABN","CRM","GTM","ISE","MIP","TSB"],"2025MMS2194":["BFA","BMA","CMABN","CRM","GTM","ISE","SP","SSCM"],"2025MMS2196":["BFA","CMABN","CRM","GTM","ISE","MIP","SP","TSB"],"2025MMS2197":["BFA","BMA","EAIS","GTM","ISE","MIP","SP","TSB"],"2025MMS2001":["BMA","CMABN","DMS","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2002":["BMA","CMABN","EAIS","GTM","ISE","PBM","SSCM","TSB"],"2025MMS2006":["BMA","CMABN","DMS","EAIS","ISE","PBM","SP","SSCM"],"2025MMS2008":["BMA","CMABN","CRM","EAIS","GTM","ISE","PBM","SSCM"],"2025MMS2009":["BMA","CMABN","DMS","EAIS","ISE","PBM","SP","SSCM"],"2025MMS2011":["BMA","CMABN","CRM","DMS","EAIS","PBM","SP","SSCM"],"2025MMS2012":["BMA","CMABN","DMS","EAIS","ISE","PBM","SP","TSB"],"2025MMS2020":["BMA","CMABN","EAIS","ISE","MIP","PBM","SP","TSB"],"2025MMS2023":["BMA","CMABN","CRM","DMS","EAIS","MIP","SP","SSCM"],"2025MMS2025":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2026":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2027":["BMA","CRM","EAIS","GTM","ISE","PBM","SSCM","TSB"],"2025MMS2030":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","TSB"],"2025MMS2031":["BMA","CMABN","DMS","EAIS","ISE","PBM","SP","TSB"],"2025MMS2036":["BMA","CMABN","CRM","DMS","ISE","PBM","SP","SSCM"],"2025MMS2041":["BMA","CMABN","CRM","EAIS","ISE","MIP","PBM","TSB"],"2025MMS2050":["BMA","CMABN","CRM","DMS","ISE","SP","SSCM","TSB"],"2025MMS2054":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2055":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2060":["BMA","CMABN","EAIS","GTM","ISE","PBM","SSCM","TSB"],"2025MMS2062":["BMA","CMABN","CRM","EAIS","ISE","SP","SSCM","TSB"],"2025MMS2063":["BMA","CMABN","CRM","DMS","GTM","PBM","SP","SSCM"],"2025MMS2068":["BMA","CMABN","EAIS","ISE","MIP","PBM","SSCM","TSB"],"2025MMS2070":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","TSB"],"2025MMS2071":["BMA","CMABN","CRM","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2072":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2073":["BMA","CMABN","DMS","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2075":["BMA","CMABN","CRM","DMS","EAIS","MIP","SP","SSCM"],"2025MMS2077":["BMA","CRM","DMS","GTM","ISE","PBM","SP","SSCM"],"2025MMS2079":["BMA","CRM","DMS","ISE","MIP","PBM","SP","SSCM"],"2025MMS2082":["BMA","CMABN","CRM","EAIS","GTM","PBM","SP","SSCM"],"2025MMS2083":["BMA","CMABN","DMS","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2087":["BMA","CMABN","CRM","GTM","PBM","SP","SSCM","TSB"],"2025MMS2090":["BMA","CMABN","CRM","EAIS","ISE","PBM","SP","TSB"],"2025MMS2091":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2092":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","SSCM"],"2025MMS2093":["BMA","CMABN","EAIS","GTM","ISE","PBM","SSCM","TSB"],"2025MMS2094":["BMA","CMABN","DMS","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2096":["BMA","CMABN","CRM","DMS","EAIS","MIP","SP","SSCM"],"2025MMS2098":["BMA","CRM","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2102":["BMA","CMABN","DMS","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2107":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2108":["BMA","CMABN","CRM","DMS","ISE","PBM","SP","SSCM"],"2025MMS2109":["BMA","CMABN","DMS","EAIS","GTM","PBM","SP","TSB"],"2025MMS2118":["BMA","CMABN","CRM","DMS","EAIS","PBM","SP","TSB"],"2025MMS2119":["BMA","CMABN","DMS","EAIS","ISE","PBM","SSCM","TSB"],"2025MMS2120":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2122":["BMA","CMABN","CRM","EAIS","GTM","ISE","PBM","TSB"],"2025MMS2123":["BMA","CMABN","CRM","DMS","EAIS","SP","SSCM","TSB"],"2025MMS2126":["BMA","CMABN","CRM","GTM","ISE","PBM","SP","SSCM"],"2025MMS2129":["BMA","CMABN","CRM","DMS","ISE","MIP","SP","SSCM"],"2025MMS2133":["BMA","CMABN","CRM","DMS","EAIS","GTM","SP","SSCM"],"2025MMS2134":["BMA","CMABN","EAIS","ISE","MIP","PBM","SP","TSB"],"2025MMS2141":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2143":["BMA","CMABN","CRM","GTM","ISE","PBM","SSCM","TSB"],"2025MMS2144":["BMA","CMABN","CRM","DMS","EAIS","MIP","SP","SSCM"],"2025MMS2145":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","SSCM"],"2025MMS2150":["BMA","CMABN","EAIS","GTM","ISE","SP","SSCM","TSB"],"2025MMS2152":["BMA","CMABN","EAIS","ISE","PBM","SP","SSCM","TSB"],"2025MMS2153":["BMA","CMABN","CRM","DMS","GTM","ISE","SP","SSCM"],"2025MMS2156":["BMA","CMABN","CRM","EAIS","ISE","PBM","SP","TSB"],"2025MMS2158":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","SSCM"],"2025MMS2166":["BMA","CMABN","CRM","DMS","EAIS","ISE","PBM","TSB"],"2025MMS2170":["BMA","CMABN","DMS","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2171":["BMA","CMABN","EAIS","GTM","ISE","MIP","PBM","TSB"],"2025MMS2173":["BMA","CMABN","EAIS","ISE","PBM","SP","SSCM","TSB"],"2025MMS2183":["BMA","CMABN","CRM","GTM","ISE","PBM","SSCM","TSB"],"2025MMS2185":["BMA","CMABN","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2188":["BMA","CMABN","CRM","EAIS","ISE","PBM","SSCM","TSB"],"2025MMS2190":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","SSCM"],"2025MMS2191":["BMA","CMABN","CRM","EAIS","ISE","PBM","SP","TSB"],"2025MMS2192":["BMA","CMABN","EAIS","GTM","ISE","MIP","SP","TSB"],"2025MMS2195":["BMA","CMABN","DMS","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2198":["BMA","CMABN","EAIS","GTM","ISE","SP","SSCM","TSB"],"2025MMS2199":["BMA","CRM","EAIS","GTM","ISE","MIP","PBM","TSB"],"2025MMS2200":["BMA","CMABN","CRM","DMS","EAIS","MIP","SP","SSCM"],"2025MMS2201":["BMA","CMABN","CRM","DMS","EAIS","PBM","SSCM","TSB"],"2025MMS2203":["BMA","CMABN","CRM","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2204":["BMA","CMABN","CRM","DMS","EAIS","ISE","SP","SSCM"],"2025MMS2005":["CMABN","DMS","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2013":["CMABN","DMS","GTM","ISE","MIP","PBM","SP","SSCM"],"2025MMS2015":["CMABN","CRM","DMS","EAIS","ISE","PBM","SSCM","TSB"],"2025MMS2029":["CMABN","DMS","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2053":["CMABN","CRM","DMS","EAIS","ISE","SP","SSCM","TSB"],"2025MMS2074":["CMABN","CRM","DMS","EAIS","GTM","ISE","SP","TSB"],"2025MMS2099":["CMABN","CRM","DMS","EAIS","GTM","MIP","SP","SSCM"],"2025MMS2104":["CMABN","CRM","DMS","EAIS","GTM","ISE","SSCM","TSB"],"2025MMS2106":["CMABN","DMS","EAIS","GTM","ISE","SP","SSCM","TSB"],"2025MMS2121":["CMABN","CRM","DMS","EAIS","ISE","PBM","SSCM","TSB"],"2025MMS2128":["CMABN","CRM","EAIS","ISE","PBM","SP","SSCM","TSB"],"2025MMS2136":["CMABN","CRM","DMS","EAIS","PBM","SP","SSCM","TSB"],"2025MMS2165":["CMABN","CRM","DMS","EAIS","GTM","ISE","SSCM","TSB"],"2025MMS2176":["CMABN","CRM","DMS","EAIS","GTM","ISE","SP","SSCM"],"2025MMS2178":["CMABN","CRM","DMS","EAIS","ISE","MIP","PBM","SP"],"2025MMS2187":["CMABN","DMS","EAIS","GTM","ISE","PBM","SP","TSB"],"2025MMS2067":["CMABN","CRM","DMS","EAIS","ISE","PBM","SSCM","TSB"],"2025MMS2069":["CMABN","CRM","EAIS","ISE","MIP","SP","SSCM","TSB"],"2025MMS2095":["CMABN","EAIS","GTM","ISE","PBM","SP","SSCM","TSB"],"2025MMS2137":["CMABN","CRM","DMS","EAIS","ISE","SP","SSCM","TSB"],"2025MMS2155":["CMABN","EAIS","GTM","ISE","MIP","PBM","SSCM","TSB"],"2025MMS2172":["CMABN","DMS","EAIS","GTM","PBM","SP","SSCM","TSB"],"2025MMS2138":["CRM","DMS","EAIS","GTM","ISE","MIP","SP","TSB"],"2025MMS2130":["DMS","EAIS","ISE","MIP","PBM","SP","SSCM","TSB"]};
+const EXAMS=[{"id":"bfa-q1","c":"BFA","t":"Quiz 1","d":"2026-08-22","s":"19:00","x":0},{"id":"gtm-q","c":"GTM","t":"Quiz","d":"2026-08-29","s":"19:00","x":0},{"id":"mip-q","c":"MIP","t":"Quiz","d":"2026-08-30","s":"19:00","x":0},{"id":"sp-q","c":"SP","t":"Quiz","d":"2026-09-05","s":"09:00","x":0},{"id":"mip-et","c":"MIP","t":"End Term","d":"2026-09-06","s":"19:00","x":0},{"id":"gtm-et","c":"GTM","t":"End Term","d":"2026-09-13","s":"09:00","x":0},{"id":"sp-et","c":"SP","t":"End Term","d":"2026-09-19","s":"19:00","x":0},{"id":"eais-q","c":"EAIS","t":"Quiz","d":"2026-09-26","s":"19:00","x":0},{"id":"pbm-et","c":"PBM","t":"End Term","d":"2026-09-27","s":"19:00","x":0},{"id":"dms-et","c":"DMS","t":"End Term","d":"2026-10-03","s":"09:00","x":1},{"id":"ise-et","c":"ISE","t":"End Term","d":"2026-10-10","s":"09:00","x":1},{"id":"tsb-et","c":"TSB","t":"End Term","d":"2026-10-11","s":"09:00","x":1},{"id":"sscm-et","c":"SSCM","t":"End Term","d":"2026-10-17","s":"09:00","x":1},{"id":"crm-et","c":"CRM","t":"End Term","d":"2026-10-31","s":"17:30","x":0},{"id":"eais-et","c":"EAIS","t":"End Term","d":"2026-11-01","s":"17:30","x":0},{"id":"bma-et","c":"BMA","t":"End Term","d":"2026-11-07","s":"10:00","x":0},{"id":"bfa-q2","c":"BFA","t":"Quiz 2","d":"2026-11-07","s":"14:30","x":1},{"id":"cmabn-et","c":"CMABN","t":"End Term","d":"2026-11-08","s":"10:00","x":0}];
+const COURSES={"BFA":["Behavioral Finance For Managers","Prof. Saumya Ranjan Dash"],"BMA":["Business Model Advance","Prof. Prashant Salwan"],"CMABN":["Conflict Management, Alignment And Business Negotiation","Prof. Nishit Sinha"],"CRM":["Customer Relationship Management","Prof. Rajesh Kumar Sinha"],"DMS":["Digital Marketing Strategy","Prof. Jayasimha K R"],"EAIS":["Enterprise AI Strategy","Prof. Prabin Kumar Panigrahi"],"GTM":["Game Theory For Managers","Prof. Ajay Sharma"],"ISE":["Innovation Strategy For Executives","Prof. Punyashlok Dwibedy"],"MIP":["Managing Investments And Portfolio","Prof. Debasish Maitra"],"PBM":["Platform Business Models","Prof. Diksha Singh"],"SP":["Strategic Pricing","Prof. Sanjeev Tripathi"],"SSCM":["Strategic Sales And Channel Management","Prof. Manoj Motiani"],"TSB":["Technology Strategy For Business","Prof. Rajhans Mishra"]};
+const FEED_BASE_CONFIG="";
+
+function feedBase(){
+  if(FEED_BASE_CONFIG) return FEED_BASE_CONFIG.replace(/\/?$/,"/");
+  const h=location.hostname||"";
+  if(location.protocol==="https:" && !/claude/.test(h)) return new URL("feeds/",location.href).href;
+  return "";
+}
+const $=s=>document.querySelector(s);
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DAY=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function when(e){return new Date(e.d+"T"+e.s+":00+05:30")}
+function fmtTime(s){let[h,m]=s.split(":").map(Number);const ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+String(m).padStart(2,"0")+" "+ap}
+function utcStamp(dt){return dt.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"")}
+function gcalLink(e){
+  const st=when(e),en=new Date(st.getTime()+75*60000);const c=COURSES[e.c];
+  const p=new URLSearchParams({action:"TEMPLATE",text:e.c+" "+e.t+" exam",
+    dates:utcStamp(st)+"/"+utcStamp(en),ctz:"Asia/Kolkata",
+    details:c[0]+" ("+e.c+") "+e.t+"\n"+c[1]+"\nTerm V, EMP MMS Batch 02. Dates are tentative."});
+  return "https://calendar.google.com/calendar/render?"+p.toString();
+}
+function normalize(v){
+  v=(v||"").trim().toUpperCase().replace(/\s+/g,"");
+  if(/^\d{1,4}$/.test(v)) v="2025MMS"+(v.length<4?String(2000+Number(v)):v);
+  if(/^MMS\d+$/.test(v)) v="2025"+v;
+  return v;
+}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("on"),2200)}
+function el(tag,attrs,...kids){const n=document.createElement(tag);for(const k in attrs||{}){if(k==="class")n.className=attrs[k];else n.setAttribute(k,attrs[k])}for(const k of kids){if(k!=null)n.append(k)}return n}
+function relDays(d){const ms=d-new Date();const days=Math.ceil(ms/86400000);if(ms<0)return "";if(ms<86400000){const h=Math.max(1,Math.round(ms/3600000));return "in "+h+" hour"+(h>1?"s":"")}return "in "+days+" day"+(days>1?"s":"")}
+
+function examRow(e,past){
+  const d=when(e),c=COURSES[e.c];
+  const dateBox=el("div",{class:"date"},el("b",{},String(Number(e.d.slice(8)))),el("small",{},MON[Number(e.d.slice(5,7))-1]+" "+DAY[new Date(e.d+"T12:00:00+05:30").getUTCDay()]));
+  const soon=!past && (d-new Date())<7*86400000;
+  const name=el("div",{class:"name"},c[0],el("span",{class:"tag"+(soon?" soon":"")},e.t));
+  const meta=el("div",{class:"meta"},fmtTime(e.s)+" IST"+(e.x?" (time assumed from Session I)":"")+", "+c[1]);
+  const body=el("div",{},name,meta);
+  const li=el("li",{class:"ex"+(past?" past":"")},dateBox,body);
+  if(!past) li.append(el("a",{class:"add",href:gcalLink(e),target:"_blank",rel:"noopener"},"Add to Google"));
+  return li;
+}
+
+function render(roll){
+  const courses=STUDENTS[roll];const res=$("#result");res.innerHTML="";
+  const mine=EXAMS.filter(e=>courses.includes(e.c)).sort((a,b)=>when(a)-when(b));
+  const now=new Date();const up=mine.filter(e=>when(e)>=now),past=mine.filter(e=>when(e)<now);
+
+  res.append(el("h3",{},"Enrolled courses for "+roll));
+  const chips=el("div",{class:"chips"});courses.forEach(c=>chips.append(el("span",{class:"chip",title:COURSES[c][0]},COURSES[c][0])));res.append(chips);
+
+  if(up.length){
+    const n=up[0];
+    res.append(el("div",{class:"next"},el("strong",{},"Next: "+COURSES[n.c][0]+" "+n.t.toLowerCase()),
+      el("span",{},new Date(n.d+"T12:00:00+05:30").toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long",timeZone:"Asia/Kolkata"})+", "+fmtTime(n.s)+" IST, "+relDays(when(n)))));
+  }
+
+  const base=feedBase();
+  const box=el("div",{class:"sub-box"},el("h2",{},"Subscribe to your exam calendar"),
+    el("p",{},"Subscribing adds all "+mine.length+" of your exams with reminders one day and one hour before. When exam dates are revised, your calendar updates on its own, usually within a few hours."));
+  const row=el("div",{class:"row"});
+  if(base){
+    const https=base+roll+".ics", webcal=https.replace(/^https?:/,"webcal:");
+    row.append(
+      el("a",{class:"btn",href:"https://calendar.google.com/calendar/r?cid="+encodeURIComponent(webcal),target:"_blank",rel:"noopener"},"Subscribe in Google Calendar"),
+      el("a",{class:"btn",href:webcal},"Subscribe on iPhone or Mac"));
+    const copy=el("button",{type:"button",class:"btn ghost"},"Copy calendar link");
+    copy.onclick=async()=>{try{await navigator.clipboard.writeText(https);toast("Calendar link copied")}catch(_){prompt("Copy this calendar link",https)}};
+    row.append(copy);box.append(row,el("p",{class:"note"},"Google Calendar refreshes subscribed calendars every 8 to 24 hours and does not carry the reminders over. Set a default notification for this calendar in Google Calendar settings. Apple Calendar keeps the reminders."));
+  }else{
+    row.append(el("span",{class:"btn","aria-disabled":"true"},"Subscribe in Google Calendar"),el("span",{class:"btn","aria-disabled":"true"},"Subscribe on iPhone or Mac"));
+    box.append(row,el("p",{class:"note"},"Auto-updating subscription switches on once this page is hosted with its calendar feeds. Until then, add exams one at a time with the Add to Google links below."));
+  }
+  res.append(box);
+
+  if(up.length){res.append(el("h3",{},"Upcoming ("+up.length+")"));const ol=el("ol",{class:"list"});up.forEach(e=>ol.append(examRow(e,false)));res.append(ol)}
+  else res.append(el("p",{},"All your Term V exams are complete."));
+  if(past.length){const d=el("details",{},el("summary",{},"Completed ("+past.length+")"));const ol=el("ol",{class:"list"});past.forEach(e=>ol.append(examRow(e,true)));d.append(ol);res.append(d)}
+  res.hidden=false;
+}
+
+function lookup(){
+  const roll=normalize($("#roll").value);$("#roll").value=roll;
+  if(!roll){$("#err").textContent="Enter your roll number, for example 2025MMS2006.";return}
+  if(!STUDENTS[roll]){$("#err").textContent=roll+" is not on any Term V course roster. Check the number, for example 2025MMS2006.";$("#result").hidden=true;return}
+  $("#err").textContent="";render(roll);
+  try{localStorage.setItem("t5roll",roll)}catch(_){}
+}
+$("#go").addEventListener("click",lookup);
+$("#roll").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lookup()}});
+// PWA: only where the page is hosted on its own site
+(function(){
+  const hosted=location.protocol==="https:" && !/claude/.test(location.hostname);
+  if(!hosted) return;
+  const add=(rel,href)=>{const l=document.createElement("link");l.rel=rel;l.href=href;document.head.append(l)};
+  add("manifest","manifest.webmanifest");add("apple-touch-icon","icons/apple-touch-icon.png");
+  if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+  let deferred=null;
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#installRow").hidden=false});
+  $("#installBtn").addEventListener("click",async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("#installRow").hidden=true});
+  window.addEventListener("appinstalled",()=>{$("#installRow").hidden=true;toast("App installed")});
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!standalone) $("#iosHint").hidden=false;
+})();
+try{const r=localStorage.getItem("t5roll");if(r&&STUDENTS[r]){$("#roll").value=r;render(r)}}catch(_){}
+</script>
+</body>
+</html>
