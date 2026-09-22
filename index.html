@@ -276,7 +276,7 @@ function buildResults(root,roll){
   async function tryUnlock(ph,silent){
     ph=normPhone(ph);if(ph.length<8){if(!silent)msg.textContent="Enter your full mobile number.";return}
     go.disabled=true;go.textContent="Checking";msg.textContent="";
-    try{const data=await unlockResults(roll,ph);box.hidden=true;renderResults(view,data,roll);
+    try{const data=await unlockResults(roll,ph);box.hidden=true;if(!silent)gc("results-unlock");renderResults(view,data,roll);
       if(rem.checked){try{localStorage.setItem("t5ph:"+roll,ph)}catch(_){}}}
     catch(e){if(!silent)msg.textContent=(window.crypto&&crypto.subtle)?"That number doesn't match our records for "+roll+". Use the number on your programme registration, or message Adarsh.":"Your browser can't unlock results here. Open the site in Safari or Chrome.";
       try{localStorage.removeItem("t5ph:"+roll)}catch(_){}}
@@ -486,7 +486,7 @@ function render(roll){
   buildResults(rsP,roll);
   const tabs=el("div",{class:"tabs",role:"tablist"});
   const T={classes:["t-classes","p-classes","Classes",clP],exams:["t-exams","p-exams","Exams",exP],results:["t-results","p-results","Results",rsP],courses:["t-courses","p-courses","Groups",coP]};
-  const btn={};for(const k in T){btn[k]=el("button",{type:"button",role:"tab",id:T[k][0],"aria-controls":T[k][1]},T[k][2]);btn[k].onclick=()=>pick(k);tabs.append(btn[k])}
+  const btn={};for(const k in T){btn[k]=el("button",{type:"button",role:"tab",id:T[k][0],"aria-controls":T[k][1]},T[k][2]);btn[k].onclick=()=>{pick(k);gc("tab-"+k)};tabs.append(btn[k])}
   function pick(which){if(!T[which])which="classes";for(const k in T){btn[k].setAttribute("aria-selected",k===which);T[k][3].hidden=k!==which}try{localStorage.setItem("t5tab",which)}catch(_){}}
   tabs.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;const ks=Object.keys(T),cur=ks.findIndex(k=>btn[k].getAttribute("aria-selected")==="true");const n=ks[(cur+(e.key==="ArrowRight"?1:ks.length-1))%ks.length];pick(n);btn[n].focus()});
   res.append(tabs,clP,exP,rsP,coP);
@@ -495,11 +495,12 @@ function render(roll){
   res.hidden=false;
 }
 
+function gc(name){try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:name,title:name,event:true})}catch(_){}}
 function lookup(){
   const roll=normalize($("#roll").value);$("#roll").value=roll;
   if(!roll){$("#err").textContent="Enter your roll number, for example 2025MMS2006.";return}
   if(!STUDENTS[roll]){$("#err").textContent=roll+" is not on any Term V course roster. Check the number, for example 2025MMS2006.";$("#result").hidden=true;return}
-  $("#err").textContent="";render(roll);
+  $("#err").textContent="";render(roll);gc("lookup");
   try{localStorage.setItem("t5roll",roll)}catch(_){}
 }
 $("#go").addEventListener("click",lookup);
@@ -516,7 +517,7 @@ const TIERS=[
  {t:"Buy me a bike",e:"\uD83C\uDFCD",a:100000,big:1},{t:"Buy me a car",e:"\uD83D\uDE97",a:0,big:1,say:"Car fund"},{t:"Buy me a home",e:"\uD83C\uDFE0",a:0,big:1,say:"Home fund"}];
 function upiQuery(a,tn){const p=new URLSearchParams({pa:UPI.pa,pn:UPI.pn,cu:"INR",tn:tn});if(a)p.set("am",String(a)+".00");return p.toString().replace(/\+/g,"%20").replace(/%40/g,"@")}
 function inr(n){return "\u20B9"+Number(n).toLocaleString("en-IN")}
-function openPay(t){
+function openPay(t){gc("support-"+(t.a||"open"));
   const a=t.a,tn=(t.say||t.t.replace("Buy me ","").replace(/^a /,"1 ").replace(/^./,m=>m.toUpperCase()))+" for IIMXamday";
   const q=upiQuery(a,tn);
   $("#pay-h").textContent=t.t;
@@ -579,5 +580,6 @@ function openPay(t){
 })();
 try{const r=localStorage.getItem("t5roll");if(r&&STUDENTS[r]){$("#roll").value=r;render(r)}}catch(_){}
 </script>
+<script data-goatcounter="https://adarsh.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
