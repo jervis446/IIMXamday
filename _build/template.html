@@ -159,7 +159,6 @@ details{margin-top:24px}
 summary{cursor:pointer;font-weight:600;color:var(--muted);padding:6px 0}
 .made{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 12px}
 .heart{color:#D6336C}
-.who .ig{text-decoration-thickness:2px}
 .ig{color:inherit;text-decoration:underline;text-decoration-color:#D6336C;text-underline-offset:3px}
 .install{margin:0 0 12px}
 footer{margin-top:40px;font-size:13px;color:var(--muted);max-width:62ch}
@@ -209,7 +208,7 @@ footer{margin-top:40px;font-size:13px;color:var(--muted);max-width:62ch}
   </dialog>
 
   <footer>
-    <p class="made"><a class="ig" href="https://claude.ai/artifact/VXVwu8LJo1evJ1mLV2cFK2" target="_blank" rel="noopener">Privacy</a> &middot; <a class="ig" href="https://claude.ai/artifact/JUZgpjTXuLsxTpxm32znEH" target="_blank" rel="noopener">Terms</a> &middot; Made with <span class="heart" aria-label="love">&#10084;</span> by <a class="ig" href="https://www.instagram.com/____a.d.a.r.s.h____/" target="_blank" rel="noopener">Adarsh</a></p>
+    <p class="made"><a class="ig" href="https://claude.ai/artifact/VXVwu8LJo1evJ1mLV2cFK2" target="_blank" rel="noopener">Privacy</a> &middot; Made with <span class="heart" aria-label="love">&#10084;</span> by <a class="ig" href="https://www.instagram.com/____a.d.a.r.s.h____/" target="_blank" rel="noopener">Adarsh</a></p>
     <p id="installRow" class="install" hidden><button type="button" id="installBtn" class="btn ghost">Install app</button></p>
     <p id="iosHint" hidden>On iPhone, tap Share, then Add to Home Screen to install this app.</p>
     Schedule data last changed __SYNCED__. Exam dates are tentative, as published in the Term V schedule. Calendar events are 75 minutes, matching one session slot. Where the schedule gives no start time, the Session I slot (9:00 AM) is used and marked. All times are IST.
@@ -277,9 +276,9 @@ function buildResults(root,roll){
   async function tryUnlock(ph,silent){
     ph=normPhone(ph);if(ph.length<8){if(!silent)msg.textContent="Enter your full mobile number.";return}
     go.disabled=true;go.textContent="Checking";msg.textContent="";
-    try{const data=await unlockResults(roll,ph);box.hidden=true;if(!silent)gc("results-unlock/"+roll,(NAMES[roll]||roll)+" ("+roll+")");renderResults(view,data,roll);
+    try{const data=await unlockResults(roll,ph);box.hidden=true;if(!silent)gc("results-unlock");renderResults(view,data,roll);
       if(rem.checked){try{localStorage.setItem("t5ph:"+roll,ph)}catch(_){}}}
-    catch(e){if(!silent)gc("results-fail/"+roll,(NAMES[roll]||roll)+" ("+roll+")");if(!silent){msg.textContent="";if(window.crypto&&crypto.subtle)msg.append("That number doesn't match our records for "+roll+". Use the number on your programme registration, or message ",igLink("Adarsh"),".");else msg.textContent="Your browser can't unlock results here. Open the site in Safari or Chrome."}
+    catch(e){if(!silent)msg.textContent=(window.crypto&&crypto.subtle)?"That number doesn't match our records for "+roll+". Use the number on your programme registration, or message Adarsh.":"Your browser can't unlock results here. Open the site in Safari or Chrome.";
       try{localStorage.removeItem("t5ph:"+roll)}catch(_){}}
     go.disabled=false;go.textContent="Unlock";
   }
@@ -440,7 +439,7 @@ function render(roll){
   const mine=EXAMS.filter(e=>courses.includes(e.c)).sort((a,b)=>when(a)-when(b));
   const now=new Date();const up=mine.filter(e=>when(e)>=now),past=mine.filter(e=>when(e)<now);
 
-  res.append(el("h2",{class:"who"},roll==="2025MMS2006"?igLink(NAMES[roll]):(NAMES[roll]||roll)));
+  res.append(el("h2",{class:"who"},NAMES[roll]||roll));
   res.append(el("p",{class:"rollno"},roll));
   const exP=el("div",{id:"p-exams",role:"tabpanel","aria-labelledby":"t-exams"}),coP=el("div",{id:"p-courses",role:"tabpanel","aria-labelledby":"t-courses"});
 
@@ -496,14 +495,12 @@ function render(roll){
   res.hidden=false;
 }
 
-const IG_URL="https://www.instagram.com/____a.d.a.r.s.h____/";
-function igLink(text){return el("a",{class:"ig",href:IG_URL,target:"_blank",rel:"noopener"},text)}
-function gc(name,title,tries){tries=tries||0;try{if(window.goatcounter&&goatcounter.count){goatcounter.count({path:name,title:title||name,event:true});return}}catch(_){return}if(tries<10)setTimeout(()=>gc(name,title,tries+1),1000)}
+function gc(name){try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:name,title:name,event:true})}catch(_){}}
 function lookup(){
   const roll=normalize($("#roll").value);$("#roll").value=roll;
   if(!roll){$("#err").textContent="Enter your roll number, for example 2025MMS2006.";return}
   if(!STUDENTS[roll]){$("#err").textContent=roll+" is not on any Term V course roster. Check the number, for example 2025MMS2006.";$("#result").hidden=true;return}
-  $("#err").textContent="";render(roll);gc("lookup/"+roll,(NAMES[roll]||roll)+" ("+roll+")");
+  $("#err").textContent="";render(roll);gc("lookup");
   try{localStorage.setItem("t5roll",roll)}catch(_){}
 }
 $("#go").addEventListener("click",lookup);
@@ -582,7 +579,7 @@ function openPay(t){gc("support-"+(t.a||"open"));
   const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
   if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!standalone) $("#iosHint").hidden=false;
 })();
-try{const r=localStorage.getItem("t5roll");if(r&&STUDENTS[r]){$("#roll").value=r;render(r);gc("return/"+r,(NAMES[r]||r)+" ("+r+")")}}catch(_){}
+try{const r=localStorage.getItem("t5roll");if(r&&STUDENTS[r]){$("#roll").value=r;render(r)}}catch(_){}
 </script>
 <script data-goatcounter="https://adarsh.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
