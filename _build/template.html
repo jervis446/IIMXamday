@@ -53,6 +53,12 @@ button,.btn{font:inherit;font-weight:600;font-size:15px;border-radius:10px;paddi
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
 .err{color:#C0392B;font-weight:600;margin:10px 0 0;min-height:1.5em}
 #result{margin-top:28px}
+.rd{margin-top:8px}
+.rd summary{font-size:13.5px;font-weight:600;color:var(--teal);padding:2px 0}
+.rd ul{margin:6px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink)}
+.rd a{color:var(--teal);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line)}
+.rd li{margin-bottom:3px}
+.rdlink{display:inline-block;margin-top:6px;font-size:13px;font-weight:600}
 .dayhead{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;margin-bottom:16px}
 .daytitle{text-align:center;line-height:1.2}
 .daytitle small{display:block;font-size:13px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.06em}
@@ -125,6 +131,8 @@ dialog .x button{background:transparent;color:var(--muted);border:0;font-size:18
 .tabs button{flex:1 1 0;justify-content:center;background:transparent;color:var(--muted);border:0;border-radius:9px;padding:10px 8px;font-size:14px}
 .tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
 .count{font-size:14px;color:var(--muted);margin:0 0 10px}
+.co .acts{flex-direction:row;align-items:center;gap:6px}
+@media (max-width:560px){.co{grid-template-columns:1fr}.co .acts{grid-column:1;justify-content:flex-start;margin-top:4px}}
 .co{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
 .co .name{font-weight:600;line-height:1.3}
 .co .meta{font-size:14px;color:var(--muted)}
@@ -223,6 +231,11 @@ const NAMES=__NAMES__;
 const EXAMS=__EXAMS__;
 const SECTIONS=__SECTIONS__;
 const CLASSES=__CLASSES__;
+const OUTLINES=__OUTLINES__;
+const READINGS=__READINGS__;
+function outlineUrl(code){if(!OUTLINES[code])return "";const d="https://drive.google.com/drive/folders/"+OUTLINES[code];return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent(d)}
+function driveFile(id){return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent("https://drive.google.com/file/d/"+id+"/view")}
+function readingsFor(code,n){return (READINGS[code]||[]).filter(r=>r.s.includes(n))}
 const RESULTS=__RESULTS__;
 const LINKS=__LINKS__;
 function WA_ICON(){const s=document.createElementNS("http://www.w3.org/2000/svg","svg");s.setAttribute("viewBox","0 0 24 24");s.setAttribute("aria-hidden","true");s.setAttribute("fill","currentColor");const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d","M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z");s.append(p);return s}
@@ -397,8 +410,20 @@ function buildClasses(root,roll,myExams){
         const b=el("button",{type:"button",class:"add","aria-label":"Add "+c[0]+" class to Apple Calendar"},"Apple");
         b.onclick=()=>saveIcs([k],roll,code.toLowerCase()+"-class-"+k.n);acts.append(b);
       }
+      const ou=outlineUrl(code);
+      if(ou){acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
+      }
+      const body=el("div",{},nm,el("div",{class:"meta"},"Session "+k.n+", "+c[1]));
+      const rd=readingsFor(code,k.n);
+      if(rd.length){
+        const d=el("details",{class:"rd"},el("summary",{},rd.length+" reading"+(rd.length>1?"s":"")+" and cases"));
+        const ul=el("ul",{});
+        rd.forEach(r=>ul.append(el("li",{},r.f?el("a",{href:driveFile(r.f),target:"_blank",rel:"noopener"},r.t):r.t)));
+        d.append(ul);
+        body.append(d);
+      }
       ol.append(el("li",{class:"cl"+(over?" past":"")},el("div",{class:"tm"},fmtTime(k.s),el("small",{},"to "+fmtTime(k.e))),
-        el("div",{},nm,el("div",{class:"meta"},"Session "+k.n+", "+c[1])),acts));
+        body,acts));
     });
     body.append(ol);
     const base=feedBase();
@@ -472,13 +497,17 @@ function render(roll){
   else exP.append(el("p",{},"All your Term V exams are complete."));
   if(past.length){const d=el("details",{},el("summary",{},"Completed ("+past.length+")"));const ol=el("ol",{class:"list"});past.forEach(e=>ol.append(examRow(e,true)));d.append(ol);exP.append(d)}
   const secs=SECTIONS[roll];
-  coP.append(el("p",{class:"count"},secs.length+" courses allotted. Tap Join to open the course WhatsApp group."));
+  coP.append(el("p",{class:"count"},secs.length+" courses allotted. Folder opens the course readings in Drive. Pick your iimidr account when Google asks."));
   const cl=el("ol",{class:"list courses"});
   secs.slice().sort((a,b)=>COURSES[a.split("-")[0]][0].localeCompare(COURSES[b.split("-")[0]][0])).forEach(k=>{
     const [code,sec]=k.split("-"),c=COURSES[code],link=LINKS[k];
     const nm=el("div",{class:"name"},c[0]);if(sec)nm.append(el("span",{class:"tag sec"},"Section "+sec));
     const li=el("li",{class:"co"},el("div",{},nm,el("div",{class:"meta"},c[1])));
-    li.append(link?el("a",{class:"wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join"):el("span",{class:"wa off"},"No link"));
+    const acts=el("div",{class:"acts"});
+    const ou=outlineUrl(code);
+    if(ou)acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
+    acts.append(link?el("a",{class:"wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join"):el("span",{class:"wa off"},"No link"));
+    li.append(acts);
     cl.append(li)});
   coP.append(cl);
   const clP=el("div",{id:"p-classes",role:"tabpanel","aria-labelledby":"t-classes"});
