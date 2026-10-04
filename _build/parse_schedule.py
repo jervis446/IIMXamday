@@ -2,9 +2,9 @@
 Row cells: [date, day, exam label, exam time, S1..S7]. Dates as YYYY-MM-DD, times as HH:MM. Stdlib only."""
 import json, re, sys
 SLOTS=[('09:00','10:15'),('10:30','11:45'),('12:00','13:15'),('14:30','15:45'),('16:00','17:15'),('17:30','18:45'),('19:00','20:15')]
-CLS=re.compile(r'^(PBM|DMS|MIP|GTM|SSCM|BFA|ISE|CRM|TSB|BMA|Strategic Pricing|CMABN [AB]|E AI S-[AB])[- ]?0*(\d+)$',re.I)
-CMAP={'STRATEGIC PRICING':'SP','CMABN A':'CMABN-A','CMABN B':'CMABN-B','E AI S-A':'EAIS-A','E AI S-B':'EAIS-B'}
-EX=re.compile(r'^(E\s*AI\s*S|CMABN|BFA|BMA|CRM|DMS|GTM|ISE|MIP|PBM|SP|SSCM|TSB)\b[\s-]*(.*)$',re.I)
+CLS=re.compile(r'^(PBM|DMS|MIP|GTM|SSCM|BFA|BFM|ISE|CRM|TSB|BMA|Strategic Pricing|CMABN [AB]|E AI S-[AB])[- ]?0*(\d+)$',re.I)
+CMAP={'BFM':'BFA','STRATEGIC PRICING':'SP','CMABN A':'CMABN-A','CMABN B':'CMABN-B','E AI S-A':'EAIS-A','E AI S-B':'EAIS-B'}
+EX=re.compile(r'^(E\s*AI\s*S|CMABN|BFA|BFM|BMA|CRM|DMS|GTM|ISE|MIP|PBM|SP|SSCM|TSB)\b[\s-]*(.*)$',re.I)
 def norm_time(t):
     t=str(t or '').strip()
     m=re.match(r'^(\d{1,2}):(\d{2})',t)
@@ -49,6 +49,10 @@ def parse(rows):
                 elif prev and prev['d']==d: pass
                 else: exams[ex['id']]=dict(ex,d=d,s='09:00',x=1)
             else: print('unrecognised exam label:',lab,file=sys.stderr)
+    try:
+        for o in json.load(open('exam_overrides.json')):
+            if o['id'] not in exams: exams[o['id']]=o
+    except FileNotFoundError: pass
     ex=sorted(exams.values(),key=lambda e:(e['d'],e['s']))
     for e in ex: e.pop('src',None)
     return classes,ex

@@ -2,6 +2,8 @@ import json, datetime as dt, sys, os, hashlib, re
 from exams import C
 OUT=os.environ.get('OUT','site')
 EXAMS=json.load(open('exams.json'))
+OUTLINES=json.load(open('outlines.json'))
+READINGS=json.load(open('readings.json'))
 raw=json.load(open('students.json'))
 students={r:sorted({c.split('-')[0] for c in v['c']}) for r,v in raw.items()}
 sections={r:sorted(v['c']) for r,v in raw.items()}
@@ -71,6 +73,8 @@ if __name__=='__main__':
     html=open('template.html').read()
     html=(html.replace('__STUDENTS__',json.dumps(students,separators=(',',':')))
               .replace('__RESULTS__',RESULTS)
+              .replace('__READINGS__',json.dumps(READINGS,ensure_ascii=False,separators=(',',':')))
+              .replace('__OUTLINES__',json.dumps(OUTLINES,separators=(',',':')))
               .replace('__CLASSES__',json.dumps(CLASSES,separators=(',',':')))
               .replace('__SECTIONS__',json.dumps(sections,separators=(',',':')))
               .replace('__LINKS__',json.dumps(links,separators=(',',':')))
