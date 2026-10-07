@@ -17,7 +17,7 @@ def utc(d,s,add=0):
     return t.astimezone(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 def esc(s): return s.replace('\\','\\\\').replace(',','\\,').replace(';','\\;').replace('\n','\\n')
 # Version bumps only when the schedule data changes, so unchanged runs produce identical files
-_h=hashlib.sha256((json.dumps(EXAMS,sort_keys=True)+json.dumps(CLASSES,sort_keys=True)).encode()).hexdigest()
+_h=hashlib.sha256((json.dumps(EXAMS,sort_keys=True)+json.dumps(CLASSES,sort_keys=True)+open('../data/schedule.json').read()).encode()).hexdigest()
 try: _v=json.load(open('version.json'))
 except Exception: _v={'hash':'','version':1,'stamp':dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')}
 if _v['hash']!=_h:
