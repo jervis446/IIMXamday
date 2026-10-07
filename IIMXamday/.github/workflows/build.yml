@@ -1,0 +1,64 @@
+name: Rebuild from schedule
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/schedule.json', '_build/**', '.github/workflows/build.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: rebuild
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse schedule and rebuild site
+        working-directory: _build
+        run: |
+          python parse_schedule.py ../data/schedule.json
+          OUT=.. python build.py
+
+      - name: Commit rebuilt files if anything changed
+        run: |
+          git config user.name "iimxamday-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html sw.js feeds _build/version.json _build/classes.json _build/exams.json
+          if git diff --cached --quiet; then
+            echo "Schedule unchanged, nothing to commit"
+          else
+            git commit -m "Rebuild from schedule sync"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Stage public files
+        run: |
+          mkdir dist
+          cp -r index.html sw.js manifest.webmanifest icons feeds dist/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
