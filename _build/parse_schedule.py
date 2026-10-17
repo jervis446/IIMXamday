@@ -17,10 +17,13 @@ def exam_of(label):
     m=EX.match(lab)
     if not m: return None
     code=re.sub(r'\s','',m.group(1)).upper(); rest=m.group(2)
+    if code=='BFM': code='BFA'
     if re.search(r'quiz',rest,re.I):
         n=re.search(r'(\d+)',rest); t='Quiz '+str(int(n.group(1))) if n else 'Quiz'
         eid=code.lower()+'-q'+(str(int(n.group(1))) if n else '')
     elif re.search(r'\bET\b|end\s*term',rest,re.I): t='End Term'; eid=code.lower()+'-et'
+    elif re.search(r'assignment|submission',rest,re.I): t='Assignment'; eid=code.lower()+'-as'
+    elif re.search(r'present|viva',rest,re.I): t='Presentation'; eid=code.lower()+'-pr'
     elif re.search(r'mid',rest,re.I): t='Mid Term'; eid=code.lower()+'-mt'
     else: return None
     return dict(id=eid,c=code,t=t)
