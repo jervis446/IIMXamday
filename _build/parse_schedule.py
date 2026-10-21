@@ -63,6 +63,16 @@ if __name__=='__main__':
     src=sys.argv[1] if len(sys.argv)>1 else '../data/schedule.json'
     rows=json.load(open(src))['rows']
     classes,exams=parse(rows)
+    try:
+        camp=json.load(open('campus.json'))
+    except FileNotFoundError:
+        camp={'classes':[],'events':[]}
+    have={(k['c'],k['n'],k['d']) for k in classes}
+    for k in camp['classes']:
+        if (k['c'],k['n'],k['d']) in have: continue
+        k=dict(k); k['id']=f"{k['c'].lower()}-{k['n']}-{k['d']}"; k['campus']=1
+        classes.append(k)
+    classes.sort(key=lambda k:(k['d'],k['s'],k['c']))
     json.dump(classes,open('classes.json','w'),separators=(',',':'))
     json.dump(exams,open('exams.json','w'),indent=0)
     print(len(classes),'classes,',len(exams),'exams')

@@ -53,6 +53,9 @@ button,.btn{font:inherit;font-weight:600;font-size:15px;border-radius:10px;paddi
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
 .err{color:#C0392B;font-weight:600;margin:10px 0 0;min-height:1.5em}
 #result{margin-top:28px}
+.campus{display:inline-block;font-size:13px;font-weight:700;color:var(--teal);background:var(--teal-soft);border-radius:999px;padding:4px 12px;margin:0 0 12px}
+.cl.ev .tm{color:var(--teal)}
+.room{font-weight:600;color:var(--teal)}
 .rd{margin-top:8px}
 .rd summary{font-size:13.5px;font-weight:600;color:var(--teal);padding:2px 0}
 .rd ul{margin:6px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink)}
@@ -231,6 +234,7 @@ const NAMES=__NAMES__;
 const EXAMS=__EXAMS__;
 const SECTIONS=__SECTIONS__;
 const CLASSES=__CLASSES__;
+const EVENTS=__EVENTS__;
 const OUTLINES=__OUTLINES__;
 const READINGS=__READINGS__;
 function outlineUrl(code){if(!OUTLINES[code])return "";const d="https://drive.google.com/drive/folders/"+OUTLINES[code];return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent(d)}
@@ -359,7 +363,7 @@ function niceDay(d,long){return new Date(d+"T12:00:00+05:30").toLocaleDateString
 function buildClasses(root,roll,myExams){
   const mySecs=SECTIONS[roll];
   const mine=CLASSES.filter(k=>mySecs.includes(k.c));
-  const days=[...new Set(mine.map(k=>k.d).concat(myExams.map(e=>e.d)))].sort();
+  const days=[...new Set(mine.map(k=>k.d).concat(myExams.map(e=>e.d)).concat(EVENTS.map(e=>e.d)))].sort();
   const today=istToday();
   if(!days.length){root.append(el("p",{},"No classes found for your courses."));return}
   let idx=days.indexOf(today);
@@ -380,6 +384,8 @@ function buildClasses(root,roll,myExams){
       body.append(el("p",{class:"count"},"No classes for you today. This is your next class day."));
     const dayCls=mine.filter(k=>k.d===d).sort((a,b)=>a.s.localeCompare(b.s));
     const dayEx=myExams.filter(e=>e.d===d);
+    const dayEv=EVENTS.filter(e=>e.d===d);
+    if(dayCls.some(k=>k.campus)||dayEv.length)body.append(el("p",{class:"campus"},"On campus at IIM Indore"));
     const upcoming=dayCls.filter(k=>clsEnd(k)>new Date());
     if(dayCls.length){
       const bar=el("div",{class:"sub-box dayall"});
@@ -397,8 +403,11 @@ function buildClasses(root,roll,myExams){
       body.append(bar);
     }
     const ol=el("ol",{class:"list"});
-    const items=dayCls.map(k=>({t:k.s,k})).concat(dayEx.map(e=>({t:e.s,e}))).sort((a,b)=>a.t.localeCompare(b.t));
+    const items=dayCls.map(k=>({t:k.s,k})).concat(dayEx.map(e=>({t:e.s,e}))).concat(dayEv.map(v=>({t:v.s,v}))).sort((a,b)=>a.t.localeCompare(b.t));
     items.forEach(it=>{
+      if(it.v){const v=it.v;
+        ol.append(el("li",{class:"cl ev"},el("div",{class:"tm"},fmtTime(v.s)),
+          el("div",{},el("div",{class:"name"},v.t,el("span",{class:"tag sec"},"Immersion")),el("div",{class:"meta"},v.note||"IIM Indore")),el("span",{})));return}
       if(it.e){const e=it.e,c=COURSES[e.c];
         ol.append(el("li",{class:"cl exam"},el("div",{class:"tm"},fmtTime(e.s)),
           el("div",{},el("div",{class:"name"},c[0],el("span",{class:"tag soon"},e.t)),el("div",{class:"meta"},"Exam, see the Exams tab")),el("span",{})));return}
@@ -422,6 +431,7 @@ function buildClasses(root,roll,myExams){
         d.append(ul);
         body.append(d);
       }
+      if(k.room)body.insertBefore(el("div",{class:"meta room"},"Room "+k.room+(k.note?", "+k.note:"")),body.children[2]||null);
       ol.append(el("li",{class:"cl"+(over?" past":"")},el("div",{class:"tm"},fmtTime(k.s),el("small",{},"to "+fmtTime(k.e))),
         body,acts));
     });

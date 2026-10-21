@@ -9,6 +9,9 @@ students={r:sorted({c.split('-')[0] for c in v['c']}) for r,v in raw.items()}
 sections={r:sorted(v['c']) for r,v in raw.items()}
 links=json.load(open('links.json'))
 CLASSES=json.load(open('classes.json'))
+try: CAMPUS=json.load(open('campus.json'))
+except Exception: CAMPUS={'title':'','events':[]}
+EVENTS=CAMPUS.get('events',[])
 RESULTS=open('results_locked.json').read()
 names={r:' '.join(v['n'].split()) for r,v in raw.items()}
 IST=dt.timezone(dt.timedelta(hours=5,minutes=30))
@@ -52,9 +55,16 @@ def class_ics(cls,name,key):
         code,_,sec=k['c'].partition('-');cn,fac=C[code]
         title=f"{code}{' '+sec if sec else ''} class {k['n']}"
         desc=f"{cn}{' (Section '+sec+')' if sec else ''}, session {k['n']}\n{fac}\nTerm V online class, EMP MMS Batch 02, IIM Indore."
+        if k.get('room'): desc+=f"\nRoom {k['room']}"
         L+=['BEGIN:VEVENT',f"UID:{k['id']}-{key}@iimxamday",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
-            f"DTSTART:{utc(k['d'],k['s'])}",'DTEND:'+utc(k['d'],k['e']),'SUMMARY:'+esc(title),'DESCRIPTION:'+esc(desc),
-            'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+esc(title+' in 10 minutes'),'TRIGGER:-PT10M','END:VALARM','END:VEVENT']
+            f"DTSTART:{utc(k['d'],k['s'])}",'DTEND:'+utc(k['d'],k['e']),'SUMMARY:'+esc(title),'DESCRIPTION:'+esc(desc)]
+        if k.get('room'): L.append('LOCATION:'+esc('IIM Indore, '+k['room']))
+        L+=['BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+esc(title+' in 10 minutes'),'TRIGGER:-PT10M','END:VALARM','END:VEVENT']
+    for ev in EVENTS:
+        L+=['BEGIN:VEVENT',f"UID:{ev['id']}-{key}@iimxamday",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
+            f"DTSTART:{utc(ev['d'],ev['s'])}",'DTEND:'+utc(ev['d'],ev['e']),'SUMMARY:'+esc(ev['t']),
+            'DESCRIPTION:'+esc((ev.get('note') or '')+('\n' if ev.get('note') else '')+'On-campus immersion, EMP MMS Batch 02.'),
+            'LOCATION:'+esc('IIM Indore'),'END:VEVENT']
     L.append('END:VCALENDAR')
     out=[]
     for l in L:
@@ -75,6 +85,7 @@ if __name__=='__main__':
               .replace('__RESULTS__',RESULTS)
               .replace('__READINGS__',json.dumps(READINGS,ensure_ascii=False,separators=(',',':')))
               .replace('__OUTLINES__',json.dumps(OUTLINES,separators=(',',':')))
+              .replace('__EVENTS__',json.dumps(EVENTS,ensure_ascii=False,separators=(',',':')))
               .replace('__CLASSES__',json.dumps(CLASSES,separators=(',',':')))
               .replace('__SECTIONS__',json.dumps(sections,separators=(',',':')))
               .replace('__LINKS__',json.dumps(links,separators=(',',':')))
