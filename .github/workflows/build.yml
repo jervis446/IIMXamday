@@ -3,7 +3,7 @@ name: Rebuild from schedule
 on:
   push:
     branches: [main]
-    paths: ['data/schedule.json', '_build/**', '.github/workflows/build.yml']
+    paths: ['data/schedule.json', 'data/jobs.json', '_build/**', '.github/workflows/build.yml']
   workflow_dispatch:
 
 permissions:

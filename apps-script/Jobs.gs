@@ -43,7 +43,8 @@ function createJobsForm() {
 function syncJobs() {
   const id = PropertiesService.getScriptProperties().getProperty(JOBS_SHEET_PROP);
   if (!id) throw new Error('Run createJobsForm first');
-  const sheet = SpreadsheetApp.openById(id).getSheets()[0];
+  const ss = SpreadsheetApp.openById(id);
+  const sheet = ss.getSheets().find(s => s.getFormUrl()) || ss.getSheets()[0];
   const rows = sheet.getDataRange().getValues();
   const head = rows.shift().map(h => String(h).trim().toLowerCase());
   const col = n => head.findIndex(h => h.indexOf(n) === 0);
