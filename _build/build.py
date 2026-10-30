@@ -3,6 +3,14 @@ from exams import C
 OUT=os.environ.get('OUT','site')
 EXAMS=json.load(open('exams.json'))
 OUTLINES=json.load(open('outlines.json'))
+try: JOBS=json.load(open('../data/jobs.json'))
+except Exception: JOBS=[]
+try: ACCESS=json.load(open('access.json'))
+except Exception: ACCESS={'iter':0,'wraps':{}}
+try: DIRECTORY=json.load(open('directory_enc.json'))
+except Exception: DIRECTORY={}
+try: JOB_FORM=json.load(open('config.json')).get('jobForm','')
+except Exception: JOB_FORM=''
 READINGS=json.load(open('readings.json'))
 raw=json.load(open('students.json'))
 students={r:sorted({c.split('-')[0] for c in v['c']}) for r,v in raw.items()}
@@ -12,7 +20,7 @@ CLASSES=json.load(open('classes.json'))
 try: CAMPUS=json.load(open('campus.json'))
 except Exception: CAMPUS={'title':'','events':[]}
 EVENTS=CAMPUS.get('events',[])
-RESULTS=open('results_locked.json').read()
+RESULTS=open('results_enc.json').read()
 names={r:' '.join(v['n'].split()) for r,v in raw.items()}
 IST=dt.timezone(dt.timedelta(hours=5,minutes=30))
 def utc(d,s,add=0):
@@ -83,6 +91,10 @@ if __name__=='__main__':
     html=open('template.html').read()
     html=(html.replace('__STUDENTS__',json.dumps(students,separators=(',',':')))
               .replace('__RESULTS__',RESULTS)
+              .replace('__JOBS__',json.dumps(JOBS,ensure_ascii=False,separators=(',',':')))
+              .replace('__ACCESS__',json.dumps(ACCESS,separators=(',',':')))
+              .replace('__DIRECTORY__',json.dumps(DIRECTORY,separators=(',',':')))
+              .replace('__JOB_FORM__',json.dumps(JOB_FORM))
               .replace('__READINGS__',json.dumps(READINGS,ensure_ascii=False,separators=(',',':')))
               .replace('__OUTLINES__',json.dumps(OUTLINES,separators=(',',':')))
               .replace('__EVENTS__',json.dumps(EVENTS,ensure_ascii=False,separators=(',',':')))
