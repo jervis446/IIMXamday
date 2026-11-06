@@ -677,8 +677,12 @@ function buildBatch(root,roll){
   openDirectory().then(people=>{root.firstChild.remove();renderBatch(view,people,roll)})
     .catch(()=>{root.firstChild.textContent="Couldn't open the directory. Sign out and sign in again."});
 }
+// Display overrides for specific batch records (the directory blob is encrypted
+// and generated off-repo, so edits to a known person are applied at render time).
+const DIR_OVERRIDES={"Adarsh Kumar":{ro:"Founder & CEO",co:"Asanoha"}};
 function renderBatch(view,people,roll){
   view.innerHTML="";
+  people.forEach(p=>{const o=DIR_OVERRIDES[p.n];if(o)Object.assign(p,o)});
   const me=NAMES[roll]||"";
   const filters=el("div",{class:"filters"});
   const q=el("input",{type:"search",placeholder:"Search name, company, role, skill","aria-label":"Search the batch",class:"srch"});
