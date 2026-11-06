@@ -389,7 +389,15 @@ dialog#pay::backdrop{background:rgba(0,0,0,.4)}
 .sn-later{width:100%;background:transparent;border:0;color:var(--muted);font-family:inherit;font-weight:600;
   font-size:14px;padding:10px;cursor:pointer;border-radius:10px}
 .sn-later:hover{background:var(--panel-2);color:var(--ink)}
+.sn-credit{margin:8px 0 0;font-size:11.5px;color:var(--muted);letter-spacing:.01em}
+.sn-credit a{color:var(--brand);font-weight:600;text-decoration:none}
 @media (prefers-reduced-motion:reduce){#supportNudge[open]{animation:none}}
+
+/* footer byline + subtle Asanoha co-brand */
+.byline{margin:2px 0 10px;font-size:12.5px;color:var(--muted);font-weight:500}
+.byline .asanoha{color:var(--brand);font-weight:700;text-decoration:none;letter-spacing:.01em;
+  border-bottom:1.5px solid var(--brand-soft)}
+.byline .asanoha:hover{border-bottom-color:var(--brand)}
 </style>
 </head>
 <body>
@@ -437,10 +445,12 @@ dialog#pay::backdrop{background:rgba(0,0,0,.4)}
     <p>It&rsquo;s built and paid for by Adarsh &mdash; the hosting, the domain and the daily syncs, all on him, kept free for the batch. If it has saved you even once, a small tip keeps it running.</p>
     <div class="sn-amts" id="snAmts"></div>
     <form method="dialog"><button type="submit" class="sn-later">Maybe later</button></form>
+    <p class="sn-credit">by Adarsh Kumar &middot; <a href="https://asanoha.co.in" target="_blank" rel="noopener">Asanoha</a></p>
   </dialog>
 
   <footer>
-    <p class="made"><a class="ig" href="https://claude.ai/artifact/VXVwu8LJo1evJ1mLV2cFK2" target="_blank" rel="noopener">Privacy</a> &middot; <a class="ig" href="https://claude.ai/artifact/JUZgpjTXuLsxTpxm32znEH" target="_blank" rel="noopener">Terms</a> &middot; Made with <span class="heart" aria-label="love">&#10084;</span> by <a class="ig" href="https://www.instagram.com/____a.d.a.r.s.h____/" target="_blank" rel="noopener">Adarsh</a></p>
+    <p class="made"><a class="ig" href="https://claude.ai/artifact/VXVwu8LJo1evJ1mLV2cFK2" target="_blank" rel="noopener">Privacy</a> &middot; <a class="ig" href="https://claude.ai/artifact/JUZgpjTXuLsxTpxm32znEH" target="_blank" rel="noopener">Terms</a> &middot; Made with <span class="heart" aria-label="love">&#10084;</span> by <a class="ig" href="https://www.instagram.com/____a.d.a.r.s.h____/" target="_blank" rel="noopener">Adarsh Kumar</a></p>
+    <p class="byline">Founder &amp; CEO, <a class="asanoha" href="https://asanoha.co.in" target="_blank" rel="noopener">Asanoha</a></p>
     <p id="installRow" class="install" hidden><button type="button" id="installBtn" class="btn ghost">Install app</button></p>
     <p id="iosHint" hidden>On iPhone, tap Share, then Add to Home Screen to install this app.</p>
     Schedule data last changed __SYNCED__. Exam dates are tentative, as published in the Term V schedule. Calendar events are 75 minutes, matching one session slot. Where the schedule gives no start time, the Session I slot (9:00 AM) is used and marked. All times are IST.
@@ -1081,19 +1091,27 @@ function openPay(t){gc("support-"+(t.a||"open"));
 })();
 
 // Dismissible support popup: shows a short while after sign-in, at most once
-// per cooldown. Set NUDGE_COOLDOWN_DAYS to 0 to show on every open.
-const NUDGE_COOLDOWN_DAYS=3;
+// Support popup shows every time the app is opened or brought back to the
+// foreground (while signed in). NUDGE_MIN_GAP_SECS debounces rapid tab flips
+// so it cannot re-pop within that window; set it to 0 for literally every focus.
+const NUDGE_MIN_GAP_SECS=40;
+let _lastNudge=0;
 function maybeNudge(){
+  if(!SESSION)return;                                   // only when signed in
   const sn=$("#supportNudge");if(!sn||!sn.showModal)return;
-  try{const last=+(localStorage.getItem("t5nudge")||0);
-    if(NUDGE_COOLDOWN_DAYS>0 && Date.now()-last<NUDGE_COOLDOWN_DAYS*864e5)return;}catch(_){}
+  if(document.querySelector("dialog[open]"))return;      // never stack over another dialog
+  const now=Date.now();
+  if(now-_lastNudge<NUDGE_MIN_GAP_SECS*1000)return;      // debounce quick re-focus
+  _lastNudge=now;
   const amts=[{t:"Buy me a coffee",a:50},{t:"Buy me 2 coffees",a:100},{t:"Buy me 5 coffees",a:250}];
   const box=$("#snAmts");if(box){box.innerHTML="";
     amts.forEach(t=>{const b=el("button",{type:"button"},inr(t.a),el("small",{},t.t.replace("Buy me ","")));
       b.onclick=()=>{try{sn.close()}catch(_){}openPay(t)};box.append(b)});}
-  try{localStorage.setItem("t5nudge",String(Date.now()))}catch(_){}
-  setTimeout(()=>{try{if(!document.querySelector("dialog[open]"))sn.showModal()}catch(_){}},2200);
+  setTimeout(()=>{try{if(SESSION&&!document.querySelector("dialog[open]"))sn.showModal()}catch(_){}},1400);
 }
+// re-open when the tab/PWA returns to the foreground
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")maybeNudge()});
+window.addEventListener("pageshow",()=>maybeNudge());
 
 
 // ---------- Theme ----------
