@@ -6,11 +6,12 @@ CLS=re.compile(r'^(PBM|DMS|MIP|GTM|SSCM|BFA|BFM|ISE|CRM|TSB|BMA|Strategic Pricin
 CMAP={'BFM':'BFA','STRATEGIC PRICING':'SP','CMABN A':'CMABN-A','CMABN B':'CMABN-B','E AI S-A':'EAIS-A','E AI S-B':'EAIS-B'}
 EX=re.compile(r'^(E\s*AI\s*S|CMABN|BFA|BFM|BMA|CRM|DMS|GTM|ISE|MIP|PBM|SP|SSCM|TSB)\b[\s-]*(.*)$',re.I)
 def norm_time(t):
-    t=str(t or '').strip()
-    m=re.match(r'^(\d{1,2}):(\d{2})',t)
+    t=' '.join(str(t or '').split())
+    m=re.match(r'^(\d{1,2}):(\d{2})(?::\d{2})?\s*([ap]\.?m\.?)?', t, re.I)
     if not m: return ''
-    h=int(m.group(1))
-    if re.search(r'pm',t,re.I) and h<12: h+=12
+    h=int(m.group(1)); ap=(m.group(3) or '').lower()
+    if ap.startswith('p') and h<12: h+=12
+    if ap.startswith('a') and h==12: h=0
     return f'{h:02d}:{m.group(2)}'
 def exam_of(label):
     lab=' '.join(str(label).split())
@@ -43,15 +44,17 @@ def parse(rows):
                 classes.append(dict(id=f"{c.lower()}-{n}-{d}",c=c,n=n,d=d,s=s,e=e,slot=k+1)); continue
             ex=exam_of(v)
             if ex and ex['id'] not in exams: exams[ex['id']]=dict(ex,d=d,s=s,x=0,src='slot')
-        lab=str(r[2]).strip()
-        if lab:
+        labels=[x.strip() for x in str(r[2]).replace('\r','').split('\n') if x.strip()]
+        times=[x.strip() for x in str(r[3]).replace('\r','').split('\n') if x.strip()]
+        for k,lab in enumerate(labels):
             ex=exam_of(lab)
-            if ex:
-                t=norm_time(r[3]); prev=exams.get(ex['id'])
-                if t: exams[ex['id']]=dict(ex,d=d,s=t,x=0)
-                elif prev and prev['d']==d: pass
-                else: exams[ex['id']]=dict(ex,d=d,s='09:00',x=1)
-            else: print('unrecognised exam label:',lab,file=sys.stderr)
+            if not ex:
+                print('unrecognised exam label:',lab,file=sys.stderr); continue
+            t=norm_time(times[k]) if k<len(times) else (norm_time(times[0]) if len(times)==1 and len(labels)==1 else '')
+            prev=exams.get(ex['id'])
+            if t: exams[ex['id']]=dict(ex,d=d,s=t,x=0)
+            elif prev and prev['d']==d: pass
+            else: exams[ex['id']]=dict(ex,d=d,s='09:00',x=1)
     try:
         for o in json.load(open('exam_overrides.json')):
             if o['id'] not in exams: exams[o['id']]=o
