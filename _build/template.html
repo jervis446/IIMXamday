@@ -369,6 +369,27 @@ dialog#pay{background:var(--panel);border:1px solid var(--line);border-radius:22
   box-shadow:0 30px 80px rgba(0,0,0,.35)}
 dialog#pay::backdrop{background:rgba(0,0,0,.4)}
 .toast{background:var(--ink);color:var(--bg);border:0;border-radius:999px;box-shadow:var(--shadow)}
+
+/* support nudge popup */
+#supportNudge{text-align:center;width:min(92vw,380px);max-width:none;border:1px solid var(--line);
+  border-radius:24px;background:var(--panel);color:var(--ink);padding:26px 22px 20px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4)}
+#supportNudge::backdrop{background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+#supportNudge[open]{animation:snPop .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes snPop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+#supportNudge .sn-ico{width:58px;height:58px;margin:0 auto 14px;display:grid;place-items:center;border-radius:18px;
+  font-size:27px;color:#fff;background:linear-gradient(145deg,var(--brand),#0a5f4e);box-shadow:0 12px 26px rgba(14,124,102,.36)}
+#supportNudge h2{margin:0 0 8px;font-size:21px;font-weight:700;letter-spacing:-.01em}
+#supportNudge p{margin:0 0 18px;color:var(--muted);font-size:14.5px;line-height:1.55}
+.sn-amts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sn-amts button{background:var(--brand-soft);color:var(--brand);border:1px solid transparent;border-radius:14px;
+  padding:14px 4px 11px;font-weight:800;font-size:17px;cursor:pointer;font-family:inherit;transition:transform .14s,border-color .14s}
+.sn-amts button:hover{transform:translateY(-2px);border-color:var(--brand)}
+.sn-amts button small{display:block;font-weight:600;font-size:10.5px;opacity:.85;margin-top:3px;letter-spacing:.01em}
+.sn-later{width:100%;background:transparent;border:0;color:var(--muted);font-family:inherit;font-weight:600;
+  font-size:14px;padding:10px;cursor:pointer;border-radius:10px}
+.sn-later:hover{background:var(--panel-2);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){#supportNudge[open]{animation:none}}
 </style>
 </head>
 <body>
@@ -409,6 +430,13 @@ dialog#pay::backdrop{background:rgba(0,0,0,.4)}
     <div id="payQr" class="qr" aria-label="UPI QR code"></div>
     <p class="note" id="payNote"></p>
     <div class="upiid"><span>9412573395-2@ybl</span><button type="button" class="btn ghost" id="copyUpi">Copy UPI ID</button></div>
+  </dialog>
+  <dialog id="supportNudge" aria-labelledby="sn-h">
+    <div class="sn-ico" aria-hidden="true">&#10084;</div>
+    <h2 id="sn-h">Enjoying IIMXamday?</h2>
+    <p>It&rsquo;s built and paid for by Adarsh &mdash; the hosting, the domain and the daily syncs, all on him, kept free for the batch. If it has saved you even once, a small tip keeps it running.</p>
+    <div class="sn-amts" id="snAmts"></div>
+    <form method="dialog"><button type="submit" class="sn-later">Maybe later</button></form>
   </dialog>
 
   <footer>
@@ -992,7 +1020,7 @@ async function signIn(roll,phone,silent){
     SESSION={roll,phone,master};
     if($("#stay").checked||silent){try{localStorage.setItem("t5session",JSON.stringify({roll,phone}))}catch(_){}}
     $("#f").hidden=true;$("#signOut").hidden=false;document.querySelectorAll(".lede").forEach(e=>e.hidden=true);
-    render(roll);gc("signin/"+roll,(NAMES[roll]||roll)+" ("+roll+")");
+    render(roll);gc("signin/"+roll,(NAMES[roll]||roll)+" ("+roll+")");maybeNudge();
     return true;
   }catch(e){
     if(!silent)err.textContent=(window.crypto&&crypto.subtle)?"That number doesn't match "+roll+". Try the other number you may have given the office, or message Adarsh.":"Your browser can't sign in here. Open the site in Safari or Chrome.";
@@ -1048,7 +1076,24 @@ function openPay(t){gc("support-"+(t.a||"open"));
   $("#amtGo").onclick=()=>{const v=Math.round(Number($("#amt").value));if(!v||v<1){toast("Enter an amount in rupees");return}if(v>100000){toast("UPI allows up to "+inr(100000)+" per transfer");return}openPay({t:"Support IIMXamday",a:v,say:"Support"})};
   $("#copyUpi").onclick=async()=>{try{await navigator.clipboard.writeText(UPI.pa);toast("UPI ID copied")}catch(_){prompt("Copy the UPI ID",UPI.pa)}};
   $("#pay").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
+  const sn=$("#supportNudge");
+  if(sn)sn.addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
 })();
+
+// Dismissible support popup: shows a short while after sign-in, at most once
+// per cooldown. Set NUDGE_COOLDOWN_DAYS to 0 to show on every open.
+const NUDGE_COOLDOWN_DAYS=3;
+function maybeNudge(){
+  const sn=$("#supportNudge");if(!sn||!sn.showModal)return;
+  try{const last=+(localStorage.getItem("t5nudge")||0);
+    if(NUDGE_COOLDOWN_DAYS>0 && Date.now()-last<NUDGE_COOLDOWN_DAYS*864e5)return;}catch(_){}
+  const amts=[{t:"Buy me a coffee",a:50},{t:"Buy me 2 coffees",a:100},{t:"Buy me 5 coffees",a:250}];
+  const box=$("#snAmts");if(box){box.innerHTML="";
+    amts.forEach(t=>{const b=el("button",{type:"button"},inr(t.a),el("small",{},t.t.replace("Buy me ","")));
+      b.onclick=()=>{try{sn.close()}catch(_){}openPay(t)};box.append(b)});}
+  try{localStorage.setItem("t5nudge",String(Date.now()))}catch(_){}
+  setTimeout(()=>{try{if(!document.querySelector("dialog[open]"))sn.showModal()}catch(_){}},2200);
+}
 
 
 // ---------- Theme ----------
