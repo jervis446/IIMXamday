@@ -45,7 +45,7 @@ jobs:
 
       - name: Commit rebuilt files if anything changed
         run: |
-          git add -A index.html sw.js feeds _build/version.json _build/classes.json _build/exams.json
+          git add -A index.html sw.js feeds pack _build/version.json _build/classes.json _build/exams.json
 
           if git diff --cached --quiet; then
             echo "Schedule unchanged, nothing to commit"
@@ -57,7 +57,7 @@ jobs:
       - name: Stage public files
         run: |
           mkdir dist
-          cp -r index.html sw.js manifest.webmanifest icons feeds dist/
+          cp -r index.html sw.js manifest.webmanifest icons feeds pack dist/
 
       - uses: actions/upload-pages-artifact@v3
         with:

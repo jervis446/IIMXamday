@@ -37,11 +37,11 @@ if _v['hash']!=_h:
     json.dump(_v,open('version.json','w'),indent=1)
 SCHEDULE_VERSION=_v['version']; stamp=_v['stamp']
 def ics(exams,name,key):
-    L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//IIMXamday//Term V Exams//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH',
+    L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//IIMXamday//Term VI Exams//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH',
        'X-WR-CALNAME:'+esc(name),'X-WR-TIMEZONE:Asia/Kolkata','REFRESH-INTERVAL;VALUE=DURATION:PT6H','X-PUBLISHED-TTL:PT6H']
     for e in exams:
         cn,fac=C[e['c']]
-        desc=f"{cn} ({e['c']}) {e['t']}\n{fac}\nTerm V, EMP MMS Batch 02, IIM Indore. Dates are tentative."
+        desc=f"{cn} ({e['c']}) {e['t']}\n{fac}\nTerm VI, EMP MMS Batch 02, IIM Indore. Dates are tentative."
         if e['x']: desc+="\nStart time taken from the session slot, not stated in the schedule."
         L+=['BEGIN:VEVENT',f"UID:{e['id']}-{key}@term5-exams.iimidr",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
             f"DTSTART:{utc(e['d'],e['s'])}",f"DTEND:{utc(e['d'],e['s'],75)}",
@@ -62,7 +62,7 @@ def class_ics(cls,name,key):
     for k in cls:
         code,_,sec=k['c'].partition('-');cn,fac=C[code]
         title=f"{code}{' '+sec if sec else ''} class {k['n']}"
-        desc=f"{cn}{' (Section '+sec+')' if sec else ''}, session {k['n']}\n{fac}\nTerm V online class, EMP MMS Batch 02, IIM Indore."
+        desc=f"{cn}{' (Section '+sec+')' if sec else ''}, session {k['n']}\n{fac}\nTerm VI online class, EMP MMS Batch 02, IIM Indore."
         if k.get('room'): desc+=f"\nRoom {k['room']}"
         L+=['BEGIN:VEVENT',f"UID:{k['id']}-{key}@iimxamday",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
             f"DTSTART:{utc(k['d'],k['s'])}",'DTEND:'+utc(k['d'],k['e']),'SUMMARY:'+esc(title),'DESCRIPTION:'+esc(desc)]
@@ -71,8 +71,7 @@ def class_ics(cls,name,key):
     for ev in EVENTS:
         L+=['BEGIN:VEVENT',f"UID:{ev['id']}-{key}@iimxamday",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
             f"DTSTART:{utc(ev['d'],ev['s'])}",'DTEND:'+utc(ev['d'],ev['e']),'SUMMARY:'+esc(ev['t']),
-            'DESCRIPTION:'+esc((ev.get('note') or '')+('\n' if ev.get('note') else '')+'On-campus immersion, EMP MMS Batch 02.'),
-            'LOCATION:'+esc('IIM Indore'),'END:VEVENT']
+            'DESCRIPTION:'+esc((ev.get('note') or '')+('\n' if ev.get('note') else '')+'Term VI, EMP MMS Batch 02.'),'END:VEVENT']
     L.append('END:VCALENDAR')
     out=[]
     for l in L:
@@ -88,12 +87,16 @@ if __name__=='__main__':
         mc=[k for k in CLASSES if k['c'] in sections[r]]
         open(f'{OUT}/feeds/{r}-classes.ics','w',newline='').write(class_ics(mc,'IIMXamday classes '+r,r))
     open(OUT+'/feeds/all-exams.ics','w',newline='').write(ics(EXAMS,'IIMXamday (all courses)','all'))
+    pack=json.dumps({'results':json.loads(RESULTS),'jobs':JOBS,'directory':DIRECTORY},ensure_ascii=False,separators=(',',':'))
+    packname='data-'+hashlib.sha256(pack.encode()).hexdigest()[:10]+'.json'
+    os.makedirs(OUT+'/pack',exist_ok=True)
+    for old in os.listdir(OUT+'/pack'):
+        if old.endswith('.json') and old!=packname: os.remove(OUT+'/pack/'+old)
+    open(OUT+'/pack/'+packname,'w').write(pack)
     html=open('template.html').read()
     html=(html.replace('__STUDENTS__',json.dumps(students,separators=(',',':')))
-              .replace('__RESULTS__',RESULTS)
-              .replace('__JOBS__',json.dumps(JOBS,ensure_ascii=False,separators=(',',':')))
+              .replace('__PACK__','pack/'+packname)
               .replace('__ACCESS__',json.dumps(ACCESS,separators=(',',':')))
-              .replace('__DIRECTORY__',json.dumps(DIRECTORY,separators=(',',':')))
               .replace('__JOB_FORM__',json.dumps(JOB_FORM))
               .replace('__READINGS__',json.dumps(READINGS,ensure_ascii=False,separators=(',',':')))
               .replace('__OUTLINES__',json.dumps(OUTLINES,separators=(',',':')))

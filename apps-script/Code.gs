@@ -1,32 +1,33 @@
 /**
  * IIMXamday schedule sync.
- * Runs under your iimidr Google account, reads the Term V schedule sheet,
+ * Runs under your iimidr Google account, reads the Term VI schedule sheet,
  * and commits it to GitHub as data/schedule.json only when something changed.
  * The GitHub Action then rebuilds and redeploys the site.
  */
-const SHEET_ID = '1hCGJ7z8zkU2QhlAIzBOzTJODA7wj5uxmukQTb-TIKU4';
-const SHEET_GID = 0;                      // the tab in the URL (#gid=0)
+// Term VI schedule is an .xlsx kept in Drive, which SpreadsheetApp can't open, so it's read as CSV
+// through the Sheets viewer with this account's token. Dates come back as text like 21-Nov-26.
+const SHEET_ID = '1cNp_SKVXwuDRnmD6pzOnjtG9daaPxHpm';
+const SHEET_GID = 258007385;              // the tab in the URL (#gid=...)
 const REPO = 'jervis446/IIMXamday';
 const BRANCH = 'main';
 const PATH = 'data/schedule.json';
 const NOTIFY_ON_CHANGE = true;            // email yourself when the schedule changes
 
 function syncSchedule() {
-  const ss = SpreadsheetApp.openById(SHEET_ID);
-  const tz = ss.getSpreadsheetTimeZone();
-  const sheet = ss.getSheets().find(s => s.getSheetId() === SHEET_GID) || ss.getSheets()[0];
-  const values = sheet.getDataRange().getValues();
-
-  const rows = values.map(r => r.map(v => {
-    if (v instanceof Date) {
-      // Time-only cells come back as dates in 1899
-      return v.getFullYear() < 1901
-        ? Utilities.formatDate(v, tz, 'HH:mm')
-        : Utilities.formatDate(v, tz, 'yyyy-MM-dd');
-    }
-    return String(v).trim();
-  }));
-  const content = JSON.stringify({ sheet: 'Term V schedule', rows: rows }, null, 0);
+  const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
+    '/gviz/tq?tqx=out:csv&headers=0&gid=' + SHEET_GID;
+  const res = UrlFetchApp.fetch(url, {
+    headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() },
+    muteHttpExceptions: true
+  });
+  if (res.getResponseCode() !== 200) {
+    throw new Error('Schedule read failed: ' + res.getResponseCode());
+  }
+  const rows = Utilities.parseCsv(res.getContentText())
+    .map(r => r.map(v => String(v).trim()))
+    .map(r => { while (r.length && r[r.length - 1] === '') r.pop(); return r; })
+    .filter(r => r.length);
+  const content = JSON.stringify({ sheet: 'Term VI schedule', rows: rows }, null, 0);
 
   const token = PropertiesService.getScriptProperties().getProperty('GITHUB_TOKEN');
   if (!token) throw new Error('Add GITHUB_TOKEN in Project Settings > Script properties');
@@ -70,11 +71,14 @@ function syncSchedule() {
 
   if (NOTIFY_ON_CHANGE) {
     MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
-      'IIMXamday: Term V schedule changed',
+      'IIMXamday: Term VI schedule changed',
       'The schedule sheet changed and was pushed at ' + stamp + ' IST.\n' +
       'The site rebuilds in about 2 minutes: https://github.com/' + REPO + '/actions');
   }
 }
+
+// Keeps the Drive read scope this script needs for the token above.
+function _driveScope() { DriveApp.getRootFolder(); }
 
 function normalise(s) {
   try { return JSON.stringify(JSON.parse(s)); } catch (e) { return s; }

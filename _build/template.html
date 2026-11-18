@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#18213A">
+<meta name="theme-color" content="#7C3AED">
 <script>try{var t=localStorage.getItem("t5theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="IIMXamday">
-<title>IIMXamday: Term V exam calendar</title>
+<title>IIMXamday: Term VI exam calendar</title>
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAIAAABt+uBvAAACX0lEQVR4nO2asUoDQRCGE7ESH0DBQgURxMY2Fj6ID+FD+ASWPoAPYqGFjY2kCYhFwFoQa4vF47y9zb87t7s3k/wfKS6bITv3ZW73hst072g2IWG2xk5AOxQEoCAABQEoCEBBAAoCUBCAggAUBKAgAAUBKAhAQYDtEl/6enfYHF/cfJSYotp0+Suona7/1tx0vMQAFASgIMDQRfrn+twb+46IyQiebufhTfztckGFTzsnLlWZJuElZshOgyxniSCLdhyCzLlIA5IF2S0fR2r++Svo9GV3xVtz0xXpxUpLqTkd1yAABQEoCLBxgr5u75PiN05QKhQEoCAABQGSbxRTFznrsIIAFASgIAAFAfJ38/PF0h2cnRxoCxMwTf2n/ef7U+ijJss2fsajhLXZP75c8WkHXmKAbIJ6f0l/fJSwIbCCABQEyCYotC52xkcJGwIrCJBzm3fovw9K2ubzC9LPOtwHPc76n3+GxsuhUZCz4LsIjRdFnaD2+ccclya/oPli6V6ysKvnf39z6q2aTkz8pAKUNqsraqRjx0yzmrd78mukd3yjezHfUchaUfQKUoJeQaFtvjJKm9XIG8UKzarGXszf1GO2+ZhJHbZ7sZAL6Cge271Y+8xjjkujTtDk7/xD23zlzV6joEn0jWIFlArSA5+sApQ2q9nD2qxDs8oHh2agIAAFAZQ2q3qerGpsVsuFOWw3qxWw3axqI1lQkn6FpObPCgJIBNktIkHmwgqy6EiWc/Iu1sHEpjbk5xwqaO3hIg2gIAAFASgIQEEACgJQEICCABQEoCAABQEoCEBBgF+/G0SMg7TE/AAAAABJRU5ErkJggg==">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F4F6FA; --panel:#FFFFFF; --panel-2:#FAFBFD; --ink:#141A2E; --muted:#616B85; --line:#E2E6EF;
@@ -398,6 +398,151 @@ dialog#pay::backdrop{background:rgba(0,0,0,.4)}
 .byline .asanoha{color:var(--brand);font-weight:700;text-decoration:none;letter-spacing:.01em;
   border-bottom:1.5px solid var(--brand-soft)}
 .byline .asanoha:hover{border-bottom-color:var(--brand)}
+
+/* ======================================================================
+   Gen Z gradient layer: violet -> pink -> orange accents, aurora
+   background, glassy cards, playful type, bottom tab bar on phones.
+   ====================================================================== */
+:root{
+  --g1:#7C3AED; --g2:#EC4899; --g3:#F97316; --g4:#06B6D4;
+  --grad:linear-gradient(120deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%);
+  --grad-cool:linear-gradient(120deg,#6366F1 0%,var(--g4) 100%);
+  --bg:#FBF7FF; --panel:rgba(255,255,255,.78); --panel-2:#F4EEFC; --ink:#1A1033; --muted:#6E6488;
+  --line:rgba(124,58,237,.14);
+  --brand:#7C3AED; --brand-soft:#EFE7FE; --amber:#C2410C; --amber-soft:#FFEDD5; --red:#E11D48;
+  --shadow:0 1px 2px rgba(76,29,149,.06),0 10px 30px rgba(124,58,237,.10);
+  --font:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --radius:20px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0716; --panel:rgba(28,20,48,.72); --panel-2:#241A3D; --ink:#F6F2FF; --muted:#A99DC8;
+  --line:rgba(196,167,255,.16);
+  --brand:#C4A7FF; --brand-soft:#2A1B4D; --amber:#FDBA74; --amber-soft:#3B2213; --red:#FB7185;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.45);}}
+:root[data-theme="dark"]{
+  --bg:#0B0716; --panel:rgba(28,20,48,.72); --panel-2:#241A3D; --ink:#F6F2FF; --muted:#A99DC8;
+  --line:rgba(196,167,255,.16);
+  --brand:#C4A7FF; --brand-soft:#2A1B4D; --amber:#FDBA74; --amber-soft:#3B2213; --red:#FB7185;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.45);}
+
+body{font-family:var(--font);letter-spacing:-.005em;background:var(--bg);min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(40vmax 40vmax at 12% 8%,rgba(124,58,237,.22),transparent 60%),
+    radial-gradient(36vmax 36vmax at 92% 14%,rgba(236,72,153,.18),transparent 60%),
+    radial-gradient(42vmax 42vmax at 80% 92%,rgba(249,115,22,.14),transparent 60%),
+    radial-gradient(34vmax 34vmax at 6% 86%,rgba(6,182,212,.14),transparent 60%);
+  animation:aurora 22s ease-in-out infinite alternate}
+@keyframes aurora{to{transform:translate3d(2vmax,-2vmax,0) rotate(6deg)}}
+
+/* header */
+.brand{font-size:19px;font-weight:800;margin-bottom:18px}
+.bname{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand img{width:34px;height:34px;border-radius:11px;box-shadow:0 6px 16px rgba(124,58,237,.3)}
+.theme{background:var(--panel);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid var(--line);color:var(--ink);font-weight:700;min-height:38px}
+
+/* sign in */
+.authhero h1{font-size:clamp(30px,8vw,40px);font-weight:800;letter-spacing:-.03em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:4px}
+.authhero h1::after{content:" \2728";-webkit-text-fill-color:initial;color:initial}
+.authhero .appicon{border-radius:24px;box-shadow:0 16px 40px rgba(236,72,153,.35);animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-3deg)}}
+.signin{background:var(--panel);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  border:1px solid var(--line);border-radius:24px;position:relative}
+.signin::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1.5px;background:var(--grad);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:.55;pointer-events:none}
+#go{background:var(--grad);background-size:160% 100%;border-radius:16px;font-weight:800;min-height:54px;
+  box-shadow:0 12px 26px rgba(236,72,153,.35);transition:background-position .4s,transform .12s}
+#go:hover{background-position:100% 0}
+#go:active{transform:scale(.98)}
+
+/* identity */
+.who{font-size:clamp(24px,6.5vw,30px);font-weight:800;letter-spacing:-.02em}
+.who::before{content:"hey, ";font-weight:600;color:var(--muted)}
+.rollno{display:inline-block;background:var(--brand-soft);color:var(--brand);border-radius:999px;padding:3px 11px;font-size:12px}
+
+/* tabs: glass pill with gradient selection */
+.tabs{background:var(--panel);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  border:1px solid var(--line);border-radius:20px;padding:5px;gap:4px;box-shadow:var(--shadow)}
+.tabs button{border-radius:15px;font-weight:700;min-height:44px}
+.tabs button[aria-selected="true"]{background:var(--grad);color:#fff;box-shadow:0 8px 20px rgba(236,72,153,.32)}
+.tabs button[aria-selected="true"] svg{color:#fff}
+
+/* cards */
+.sub-box,.cl,.ex,.rs,.co,.job,.person,.mecourses,.rsum>div,.stats div{
+  background:var(--panel);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s}
+.cl:hover,.ex:hover,.job:hover,.person:hover,.co:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(124,58,237,.16)}
+.sub-box h2,.merow h2{font-weight:800}
+.next{background:var(--grad);color:#fff;border:0;border-radius:20px;padding:16px 18px;box-shadow:0 14px 30px rgba(236,72,153,.3)}
+.next strong{font-weight:800}
+.next span{color:rgba(255,255,255,.88)}
+.cl .tm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cl .tm small{-webkit-text-fill-color:var(--muted)}
+.date b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.daytitle small{color:var(--g2)}
+.daytitle strong{font-weight:800}
+.nav{border-radius:14px;background:var(--panel)}
+.campus{background:var(--grad-cool);color:#fff}
+.tag{border-radius:999px;font-weight:700}
+.tag.soon{background:linear-gradient(120deg,#FDE68A,#FDBA74);color:#7C2D12}
+.og.ga{background:var(--grad);color:#fff}
+.og.gb{background:var(--grad-cool);color:#fff}
+.og.gc{background:linear-gradient(120deg,#FDE68A,#FDBA74);color:#7C2D12}
+.rsum strong{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.avatar{background:var(--grad);color:#fff}
+.chip{background:var(--panel);font-weight:700}
+
+/* buttons */
+button,.btn{min-height:44px;border-radius:14px;font-weight:700}
+.btn:not(.ghost):not(.wa){background:var(--grad);border:0;color:#fff;box-shadow:0 8px 18px rgba(124,58,237,.25)}
+.btn.ghost{background:var(--panel);border:1px solid var(--line);color:var(--ink)}
+.acts .add,.ex a.add{border-radius:12px;font-weight:700;min-height:38px;display:inline-flex;align-items:center;justify-content:center}
+.wa,.btn.wa,.mecourses .co .wa{background:linear-gradient(120deg,#16A34A,#22C55E);border:0;color:#fff}
+.wa.off,.btn.wa.off,.mecourses .co .wa.off{background:var(--panel-2);color:var(--muted);border:1px dashed var(--line);font-weight:600}
+input:focus,select:focus,textarea:focus,.filters input.srch:focus,.filters select:focus{border-color:var(--g2);box-shadow:0 0 0 4px rgba(236,72,153,.15)}
+button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{outline-color:var(--g2)}
+
+/* support */
+.support{background:linear-gradient(150deg,rgba(124,58,237,.16),rgba(236,72,153,.10) 50%,var(--panel) 85%);border-radius:24px}
+.support .sup-ico,#supportNudge .sn-ico{background:var(--grad);box-shadow:0 10px 22px rgba(236,72,153,.35)}
+.support .custom .btn{background:var(--grad);border:0}
+.sn-amts button{background:var(--brand-soft);color:var(--brand)}
+#supportNudge,dialog#pay{background:var(--bg);border-radius:26px}
+.toast{background:var(--grad);color:#fff}
+.heart{color:var(--g2)}
+.ig{text-decoration-color:var(--g2)}
+
+/* loading skeleton for data that loads after the first screen */
+.skel{display:grid;gap:10px}
+.skel i{display:block;height:74px;border-radius:18px;
+  background:linear-gradient(100deg,var(--panel-2) 30%,var(--brand-soft) 50%,var(--panel-2) 70%);background-size:300% 100%;
+  animation:shimmer 1.2s linear infinite}
+@keyframes shimmer{from{background-position:100% 0}to{background-position:-100% 0}}
+
+/* phones: app-style bottom tab bar, bigger tap targets, no sideways scroll */
+@media (max-width:560px){
+  .wrap{padding:14px 16px calc(110px + env(safe-area-inset-bottom,0px))}
+  .brand{margin-bottom:10px}
+  .tabs{position:fixed;top:auto;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));
+    display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:5px;margin:0;border-radius:24px;z-index:30;overflow:visible;
+    box-shadow:0 10px 40px rgba(76,29,149,.28)}
+  .tabs button{flex:none;min-width:0;padding:8px 2px;font-size:10.5px;gap:3px;border-radius:18px;min-height:52px}
+  .tabs button svg{width:20px;height:20px;flex-basis:20px}
+  .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  .authhero{margin:14px 0 18px}
+  .cl{grid-template-columns:70px minmax(0,1fr)}
+  .ex{grid-template-columns:54px minmax(0,1fr)}
+  .ex>a.add:last-child{grid-column:1 / -1}
+  .dayall .row .btn,.sub-box .row .btn{flex:1 1 100%}
+  .filters select{flex:1 1 calc(50% - 8px)}
+  .name{overflow-wrap:anywhere}
+}
+@media (max-width:360px){.tabs button span{font-size:9.5px}}
+@media (prefers-reduced-motion:reduce){body::before,.authhero .appicon,.skel i{animation:none}
+  .cl:hover,.ex:hover,.job:hover,.person:hover,.co:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -453,7 +598,7 @@ dialog#pay::backdrop{background:rgba(0,0,0,.4)}
     <p class="byline">Founder &amp; CEO, <a class="asanoha" href="https://asanoha.co.in" target="_blank" rel="noopener">Asanoha</a></p>
     <p id="installRow" class="install" hidden><button type="button" id="installBtn" class="btn ghost">Install app</button></p>
     <p id="iosHint" hidden>On iPhone, tap Share, then Add to Home Screen to install this app.</p>
-    Schedule data last changed __SYNCED__. Exam dates are tentative, as published in the Term V schedule. Calendar events are 75 minutes, matching one session slot. Where the schedule gives no start time, the Session I slot (9:00 AM) is used and marked. All times are IST.
+    Schedule data last changed __SYNCED__. Exam dates are tentative, as published in the Term VI schedule. Calendar events are 75 minutes, matching one session slot. Where the schedule gives no start time, the Session I slot (9:00 AM) is used and marked. All times are IST.
   </footer>
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -470,9 +615,21 @@ const READINGS=__READINGS__;
 function outlineUrl(code){if(!OUTLINES[code])return "";const d="https://drive.google.com/drive/folders/"+OUTLINES[code];return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent(d)}
 function driveFile(id){return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent("https://drive.google.com/file/d/"+id+"/view")}
 function readingsFor(code,n){return (READINGS[code]||[]).filter(r=>r.s.includes(n))}
-const RESULTS=__RESULTS__;
-const JOBS=__JOBS__;
-const DIRECTORY=__DIRECTORY__;
+// Results, jobs and the directory live in a separate, content-hashed file so the first screen loads fast.
+let RESULTS={},JOBS=[],DIRECTORY={};
+const PACK_URL="__PACK__";
+let PACK_P=null;
+function loadPack(){
+  if(!PACK_P)PACK_P=fetch(PACK_URL).then(r=>{if(!r.ok)throw new Error("pack");return r.json()})
+    .then(p=>{RESULTS=p.results||{};JOBS=p.jobs||[];DIRECTORY=p.directory||{};return p})
+    .catch(e=>{PACK_P=null;throw e});
+  return PACK_P;
+}
+function whenPack(root,build){
+  const sk=el("div",{class:"skel"},el("i"),el("i"),el("i"));root.append(sk);
+  loadPack().then(()=>{sk.remove();build()})
+    .catch(()=>{sk.replaceWith(el("p",{class:"err"},"Couldn't load this. Check your connection and reopen the app."))});
+}
 const ACCESS=__ACCESS__;
 const JOB_FORM=__JOB_FORM__;
 const LINKS=__LINKS__;
@@ -508,7 +665,7 @@ function gcalLink(e){
   const st=when(e),en=new Date(st.getTime()+75*60000);const c=COURSES[e.c];
   const p=new URLSearchParams({action:"TEMPLATE",text:e.c+" "+e.t+" exam",
     dates:utcStamp(st)+"/"+utcStamp(en),ctz:"Asia/Kolkata",
-    details:c[0]+" ("+e.c+") "+e.t+"\n"+c[1]+"\nTerm V, EMP MMS Batch 02. Dates are tentative."});
+    details:c[0]+" ("+e.c+") "+e.t+"\n"+c[1]+"\nTerm VI, EMP MMS Batch 02. Dates are tentative."});
   return "https://calendar.google.com/calendar/render?"+p.toString();
 }
 
@@ -519,6 +676,7 @@ function normPhone(v){let d=String(v||"").replace(/\D/g,"");if(d.length===12&&d.
 let RESULTS_CACHE=null;
 async function allResults(){
   if(RESULTS_CACHE)return RESULTS_CACHE;
+  await loadPack();
   const [iv,ct]=RESULTS.blob.map(b64u8);
   const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv},SESSION.master,ct);
   RESULTS_CACHE=JSON.parse(new TextDecoder().decode(pt));
@@ -664,6 +822,7 @@ let PEOPLE_CACHE=null,PEOPLE_PROMISE=null;
 function allPeople(){
   if(PEOPLE_CACHE)return Promise.resolve(PEOPLE_CACHE);
   if(!PEOPLE_PROMISE)PEOPLE_PROMISE=(async()=>{
+    await loadPack();
     const [iv,ct]=DIRECTORY.blob.map(b64u8);
     const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv},SESSION.master,ct);
     PEOPLE_CACHE=JSON.parse(new TextDecoder().decode(pt));return PEOPLE_CACHE;
@@ -798,7 +957,7 @@ function istToday(){return new Date(Date.now()+330*60000).toISOString().slice(0,
 function clsStart(k){return new Date(k.d+"T"+k.s+":00+05:30")}
 function clsEnd(k){return new Date(k.d+"T"+k.e+":00+05:30")}
 function clsTitle(k){const code=k.c.split("-")[0],sec=k.c.split("-")[1];return code+(sec?" "+sec:"")+" class "+k.n}
-function clsDetails(k){const c=COURSES[k.c.split("-")[0]];return c[0]+(k.c.includes("-")?" (Section "+k.c.split("-")[1]+")":"")+", session "+k.n+"\n"+c[1]+"\nTerm V online class, EMP MMS Batch 02, IIM Indore."}
+function clsDetails(k){const c=COURSES[k.c.split("-")[0]];return c[0]+(k.c.includes("-")?" (Section "+k.c.split("-")[1]+")":"")+", session "+k.n+"\n"+c[1]+"\nTerm VI online class, EMP MMS Batch 02, IIM Indore."}
 function gcalClass(k){
   const p=new URLSearchParams({action:"TEMPLATE",text:clsTitle(k),dates:utcStamp(clsStart(k))+"/"+utcStamp(clsEnd(k)),ctz:"Asia/Kolkata",details:clsDetails(k)});
   return "https://calendar.google.com/calendar/render?"+p.toString();
@@ -848,7 +1007,7 @@ function buildClasses(root,roll,myExams){
     const dayCls=mine.filter(k=>k.d===d).sort((a,b)=>a.s.localeCompare(b.s));
     const dayEx=myExams.filter(e=>e.d===d);
     const dayEv=EVENTS.filter(e=>e.d===d);
-    if(dayCls.some(k=>k.campus)||dayEv.length)body.append(el("p",{class:"campus"},"On campus at IIM Indore"));
+    if(dayCls.some(k=>k.campus))body.append(el("p",{class:"campus"},"On campus at IIM Indore"));
     const upcoming=dayCls.filter(k=>clsEnd(k)>new Date());
     if(dayCls.length){
       const bar=el("div",{class:"sub-box dayall"});
@@ -967,29 +1126,30 @@ function render(roll){
   exP.append(box);
 
   if(up.length){exP.append(el("h3",{},"Upcoming ("+up.length+")"));const ol=el("ol",{class:"list"});up.forEach(e=>ol.append(examRow(e,false)));exP.append(ol)}
-  else exP.append(el("p",{},"All your Term V exams are complete."));
+  else exP.append(el("p",{},mine.length?"All your Term VI exams are complete.":"Exam dates for your Term VI courses aren't out yet. They'll show up here as soon as the schedule lists them."));
   if(past.length){const d=el("details",{},el("summary",{},"Completed ("+past.length+")"));const ol=el("ol",{class:"list"});past.forEach(e=>ol.append(examRow(e,true)));d.append(ol);exP.append(d)}
-  const secs=SECTIONS[roll];
+  // Sections aren't published for every course yet; a student listed in both sections sees the course once.
+  const secs=[...new Set(SECTIONS[roll].map(k=>{const [c,sec]=k.split("-");return sec&&SECTIONS[roll].includes(c+"-"+(sec==="A"?"B":"A"))?c+"-AB":k}))];
   coP.append(el("p",{class:"count"},secs.length+" courses allotted. Folder opens the course readings in Drive. Pick your iimidr account when Google asks."));
   const cl=el("ol",{class:"list courses"});
   secs.slice().sort((a,b)=>COURSES[a.split("-")[0]][0].localeCompare(COURSES[b.split("-")[0]][0])).forEach(k=>{
     const [code,sec]=k.split("-"),c=COURSES[code],link=LINKS[k];
-    const nm=el("div",{class:"name"},c[0]);if(sec)nm.append(el("span",{class:"tag sec"},"Section "+sec));
+    const nm=el("div",{class:"name"},c[0]);if(sec)nm.append(el("span",{class:"tag sec"},sec==="AB"?"Section not yet assigned":"Section "+sec));
     const li=el("li",{class:"co"},el("div",{},nm,el("div",{class:"meta"},c[1])));
     const acts=el("div",{class:"acts"});
     const ou=outlineUrl(code);
     if(ou)acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
-    acts.append(link?el("a",{class:"btn wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join group"):el("span",{class:"btn wa off","aria-disabled":"true"},"No link available"));
+    acts.append(link?el("a",{class:"btn wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join group"):el("span",{class:"btn wa off","aria-disabled":"true"},"Group will be added soon"));
     li.append(acts);
     cl.append(li)});
   coP.append(cl);
   const clP=el("div",{id:"p-classes",role:"tabpanel","aria-labelledby":"t-classes"});
   buildClasses(clP,roll,mine);
   const rsP=el("div",{id:"p-results",role:"tabpanel","aria-labelledby":"t-results"});
-  buildResults(rsP,roll);
+  whenPack(rsP,()=>buildResults(rsP,roll));
   const tabs=el("div",{class:"tabs",role:"tablist"});
-  const jbP=el("div",{id:"p-jobs",role:"tabpanel","aria-labelledby":"t-jobs"});buildJobs(jbP,roll);
-  const brP=el("div",{id:"p-batch",role:"tabpanel","aria-labelledby":"t-batch"});buildBatch(brP,roll);
+  const jbP=el("div",{id:"p-jobs",role:"tabpanel","aria-labelledby":"t-jobs"});whenPack(jbP,()=>buildJobs(jbP,roll));
+  const brP=el("div",{id:"p-batch",role:"tabpanel","aria-labelledby":"t-batch"});whenPack(brP,()=>buildBatch(brP,roll));
   const meP=el("div",{id:"p-me",role:"tabpanel","aria-labelledby":"t-me"});buildMe(meP,roll,coP);
   const T={classes:["t-classes","p-classes","Classes",clP],exams:["t-exams","p-exams","Exams",exP],results:["t-results","p-results","Results",rsP],jobs:["t-jobs","p-jobs","Jobs",jbP],batch:["t-batch","p-batch","Batch",brP],me:["t-me","p-me","Profile",meP]};
   const btn={};for(const k in T){btn[k]=el("button",{type:"button",role:"tab",id:T[k][0],"aria-controls":T[k][1]},TAB_ICON(k),el("span",{},T[k][2]));btn[k].onclick=()=>{pick(k);gc("tab-"+k)};tabs.append(btn[k])}
@@ -1026,7 +1186,7 @@ async function unwrapMaster(roll,phone){
 async function signIn(roll,phone,silent){
   const err=$("#err");err.textContent="";
   roll=normalize(roll);phone=normPhone(phone);
-  if(!STUDENTS[roll]){if(!silent)err.textContent=roll?roll+" is not on the Term V rosters.":"Enter your roll number.";return false}
+  if(!STUDENTS[roll]){if(!silent)err.textContent=roll?roll+" is not on the Term VI rosters.":"Enter your roll number.";return false}
   if(phone.length<10){if(!silent)err.textContent="Enter the 10 digit mobile number registered with the programme office.";return false}
   const btn=$("#go");btn.disabled=true;btn.textContent="Checking";
   try{
