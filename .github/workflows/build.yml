@@ -57,7 +57,7 @@ jobs:
       - name: Stage public files
         run: |
           mkdir dist
-          cp -r index.html sw.js manifest.webmanifest icons feeds pack dist/
+          cp -r index.html install.html sw.js manifest.webmanifest icons feeds pack dist/
 
       - uses: actions/upload-pages-artifact@v3
         with:
