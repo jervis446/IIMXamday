@@ -984,7 +984,7 @@ function niceDay(d,long){return new Date(d+"T12:00:00+05:30").toLocaleDateString
 
 function buildClasses(root,roll,myExams){
   const mySecs=SECTIONS[roll];
-  const mine=CLASSES.filter(k=>mySecs.includes(k.c));
+  const mine=CLASSES.filter(k=>mySecs.includes(k.c)||(!k.c.includes("-")&&mySecs.some(s=>s.split("-")[0]===k.c)));
   const days=[...new Set(mine.map(k=>k.d).concat(myExams.map(e=>e.d)).concat(EVENTS.map(e=>e.d)))].sort();
   const today=istToday();
   if(!days.length){root.append(el("p",{},"No classes found for your courses."));return}

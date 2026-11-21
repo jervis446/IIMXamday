@@ -84,7 +84,7 @@ if __name__=='__main__':
     for r in students:
         open(f'{OUT}/feeds/{r}.ics','w',newline='').write(ics(mine(r),'IIMXamday '+r,r))
     for r in students:
-        mc=[k for k in CLASSES if k['c'] in sections[r]]
+        mc=[k for k in CLASSES if k['c'] in sections[r] or ('-' not in k['c'] and any(s.split('-')[0]==k['c'] for s in sections[r]))]
         open(f'{OUT}/feeds/{r}-classes.ics','w',newline='').write(class_ics(mc,'IIMXamday classes '+r,r))
     open(OUT+'/feeds/all-exams.ics','w',newline='').write(ics(EXAMS,'IIMXamday (all courses)','all'))
     pack=json.dumps({'results':json.loads(RESULTS),'jobs':JOBS,'directory':DIRECTORY},ensure_ascii=False,separators=(',',':'))
