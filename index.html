@@ -617,7 +617,7 @@ function driveFile(id){return "https://accounts.google.com/AccountChooser?contin
 function readingsFor(code,n){return (READINGS[code]||[]).filter(r=>r.s.includes(n))}
 // Results, jobs and the directory live in a separate, content-hashed file so the first screen loads fast.
 let RESULTS={},JOBS=[],DIRECTORY={};
-const PACK_URL="pack/data-53ca792391.json";
+const PACK_URL="pack/data-e7e8ce6e86.json";
 let PACK_P=null;
 function loadPack(){
   if(!PACK_P)PACK_P=fetch(PACK_URL).then(r=>{if(!r.ok)throw new Error("pack");return r.json()})
