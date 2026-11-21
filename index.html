@@ -543,6 +543,10 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
 @media (max-width:360px){.tabs button span{font-size:9.5px}}
 @media (prefers-reduced-motion:reduce){body::before,.authhero .appicon,.skel i{animation:none}
   .cl:hover,.ex:hover,.job:hover,.person:hover,.co:hover{transform:none}}
+.person.vip{border:2px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--grad) border-box;box-shadow:0 10px 30px rgba(236,72,153,.22)}
+.person.vip .name{font-weight:800}
+.person.vip .name+.meta{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.tag.vipt{background:var(--grad);color:#fff;border:0;font-weight:700}
 </style>
 </head>
 <body>
@@ -838,7 +842,7 @@ function buildBatch(root,roll){
 }
 // Display overrides for specific batch records (the directory blob is encrypted
 // and generated off-repo, so edits to a known person are applied at render time).
-const DIR_OVERRIDES={"Adarsh Kumar":{ro:"Founder & CEO",co:"Asanoha"}};
+const DIR_OVERRIDES={"Adarsh Kumar":{ro:"Founder & CEO",co:"Asanoha",as:"",ig:"https://www.instagram.com/____a.d.a.r.s.h____/",vip:"Built IIMXamday"}};
 function renderBatch(view,people,roll){
   view.innerHTML="";
   people.forEach(p=>{const o=DIR_OVERRIDES[p.n];if(o)Object.assign(p,o)});
@@ -859,8 +863,8 @@ function renderBatch(view,people,roll){
     count.textContent=rows.length+" of "+people.length+" classmates";
     if(!rows.length){list.append(el("li",{class:"empty"},"Nobody matches that search."));return}
     rows.slice(0,400).forEach(p=>{
-      const li=el("li",{class:"person"});
-      li.append(el("div",{class:"name"},p.n,p.yr?el("span",{class:"tag sec"},p.yr+" yrs"):null));
+      const li=el("li",{class:"person"+(p.vip?" vip":"")});
+      li.append(el("div",{class:"name"},p.n,p.yr?el("span",{class:"tag sec"},p.yr+" yrs"):null,p.vip?el("span",{class:"tag vipt"},"\u2728 "+p.vip):null));
       li.append(el("div",{class:"meta"},[p.ro,p.co].filter(Boolean).join(" at ")));
       li.append(el("div",{class:"meta"},[p.in,p.ci].filter(Boolean).join(" \u00B7 ")));
       if(p.as)li.append(el("div",{class:"meta aspire"},"Looking towards: "+(p.as.length>90?p.as.slice(0,90).trim()+"\u2026":p.as)));
@@ -870,6 +874,7 @@ function renderBatch(view,people,roll){
       if(w)acts.append(el("a",{class:"btn wa",href:w,target:"_blank",rel:"noopener"},WA_ICON(),"Ask for a referral"));
       if(p.li)acts.append(el("a",{class:"btn ghost",href:p.li,target:"_blank",rel:"noopener"},"LinkedIn"));
       if(p.em)acts.append(el("a",{class:"btn ghost",href:"mailto:"+p.em},"Email"));
+      if(p.ig)acts.append(el("a",{class:"btn ghost",href:p.ig,target:"_blank",rel:"noopener"},"Instagram"));
       li.append(acts);
       list.append(li);
     });
