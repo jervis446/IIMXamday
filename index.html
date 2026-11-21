@@ -617,7 +617,7 @@ function driveFile(id){return "https://accounts.google.com/AccountChooser?contin
 function readingsFor(code,n){return (READINGS[code]||[]).filter(r=>r.s.includes(n))}
 // Results, jobs and the directory live in a separate, content-hashed file so the first screen loads fast.
 let RESULTS={},JOBS=[],DIRECTORY={};
-const PACK_URL="pack/data-e7e8ce6e86.json";
+const PACK_URL="pack/data-de8e3f8135.json";
 let PACK_P=null;
 function loadPack(){
   if(!PACK_P)PACK_P=fetch(PACK_URL).then(r=>{if(!r.ok)throw new Error("pack");return r.json()})
@@ -785,12 +785,12 @@ function buildJobs(root,roll){
     const term=q.value.trim().toLowerCase();
     const rows=JOBS.filter(j=>(!fDom.value||j.domain===fDom.value)&&(!fLoc.value||j.loc===fLoc.value)&&(!fTyp.value||j.type===fTyp.value)
       &&(!term||matches([j.title,j.company,j.domain,j.loc,j.notes,j.by].join(" ").toLowerCase(),term)))
-      .sort((a,b)=>new Date(b.posted)-new Date(a.posted));
+      .sort((a,b)=>((b.pin|0)-(a.pin|0))||(new Date(b.posted)-new Date(a.posted)));
     if(!rows.length){list.append(el("li",{class:"empty"},JOBS.length?"No postings match these filters.":"No postings yet."));return}
     const shown=rows.slice(0,60);
     shown.forEach(j=>{
       const li=el("li",{class:"job"});
-      li.append(el("div",{class:"name"},j.title,j.company?el("span",{class:"tag sec"},j.company):null));
+      li.append(el("div",{class:"name"},j.title,j.company?el("span",{class:"tag sec"},j.company):null,j.pin?el("span",{class:"tag sec"},"Pinned"):null));
       const bits=[j.loc,j.exp,j.type].filter(Boolean).join(" \u00B7 ");
       li.append(el("div",{class:"meta"},bits));
       if(j.notes){
