@@ -1,1 +1,221 @@
-{}
+{
+ "AFBD": [
+  {
+   "s": [
+    1
+   ],
+   "t": "Case: Zillow's Zestimate Meltdown: Struggle with AI in an Unpredictable Market",
+   "f": "1kuQeaLtj-0kUvEA6sR0Ani-7qAzx_p8n"
+  },
+  {
+   "s": [
+    1
+   ],
+   "t": "Reading: Building the AI-Powered Organization",
+   "f": "1-Z8mkXiI608xX0cI99-tCJ3nIBnoy6Uw"
+  },
+  {
+   "s": [
+    2
+   ],
+   "t": "Reading: Analytics for an Online Retailer: Demand Forecasting and Price Optimization",
+   "f": "1r03SXHS2y-aP5eMMaR-ryrJDDFj8zIOv"
+  },
+  {
+   "s": [
+    3
+   ],
+   "t": "Reading: The Pitfalls of Pricing Algorithms",
+   "f": "13SRHiWp33Sb1mCPM4J_EwDP3B28_W_1u"
+  },
+  {
+   "s": [
+    4
+   ],
+   "t": "Case: HubSpot and Motion AI: Chatbot-Enabled CRM",
+   "f": "1zfeackwmGlLcJ7LUjnYXHXzRthwTqkN_"
+  },
+  {
+   "s": [
+    5
+   ],
+   "t": "Case: Belk: Towards Exceptional Scheduling",
+   "f": "1XFOXzWwRIovQ89Q_zpR1aKtOGB_Ks27J"
+  },
+  {
+   "s": [
+    6
+   ],
+   "t": "Case: Autonomous Mobile Robots and Amazon Operations",
+   "f": "1Gvsf4-sDzHoq8Zsx7vlrX7b79X0ViJPh"
+  },
+  {
+   "s": [
+    6
+   ],
+   "t": "Reading: Where Machines Could Replace Humans, and Where They Can't (Yet)",
+   "f": "1Tjhcxyx2Nu1LsoPrfVie7NHWkE6a3ln8"
+  },
+  {
+   "s": [
+    7
+   ],
+   "t": "Case: Programming a Fairer System: Assessing Bias in Enterprise AI Products (A)",
+   "f": "1Zni-HSiNbS6qKv1UO3_l2Q-eVz1gcauj"
+  },
+  {
+   "s": [
+    7
+   ],
+   "t": "Reading: Machine Bias (ProPublica)",
+   "f": "1Ic-RGAXkcZRwPGqZSMsZM1fhDMJWqjmw"
+  },
+  {
+   "s": [
+    8
+   ],
+   "t": "Case: DBS' AI Journey",
+   "f": "1KVkA_THtCUZgvjj6N6ihokpJqFSgpLGN"
+  },
+  {
+   "s": [
+    9
+   ],
+   "t": "Case: The Future in Sight: LumineticsCore and the First Autonomous AI for Diagnostics",
+   "f": "1x_bv9VKOuYXHpCjl_amJiw9M9eeeRCjr"
+  },
+  {
+   "s": [
+    9
+   ],
+   "t": "Reading: Two Frameworks for Balancing AI Innovation and Risk",
+   "f": "1j8WRBuqZRpAyxFMA2lT-PJpqeQ_b3vMw"
+  },
+  {
+   "s": [
+    10
+   ],
+   "t": "Case: The Supply Chain AI Readiness Report: Why Operational Discipline Determines Agentic AI Success | GEP",
+   "f": "1SbXCK5yaTyk7vNsNfLgs6lwRA3UffrvM"
+  },
+  {
+   "s": [
+    10
+   ],
+   "t": "Reading: From Pilot Purgatory to Autonomous Supply Chains: The Path to Scaling Agentic AI | Darden Report",
+   "f": "1D0fV7n_3haV6h0cP9vnOnRkg122CtA2Z"
+  }
+ ],
+ "AOMDM": [
+  {
+   "s": [
+    1,
+    2
+   ],
+   "t": "Reading: Ovchinnikov (2012), Note QA-0786",
+   "f": "1VltF9RLuLYnU80vH5pVDZqhqz-UFkgrY"
+  },
+  {
+   "s": [
+    5,
+    6
+   ],
+   "t": "Case: Caterpillar Inc.: Aftermarket Parts Freight Optimization",
+   "f": "1tZbJq9NPFP1pIu5Yfmuxls6zksod17BP"
+  },
+  {
+   "s": [
+    7,
+    8
+   ],
+   "t": "Case: Ecotricity: An Optimal Investment Decision for Electric Highway Expansion",
+   "f": "1FnJWB0-0k8rteHE1Ej98EfcvFlbLTF19"
+  },
+  {
+   "s": [
+    9,
+    10
+   ],
+   "t": "Case: LUX Resorts and Hotels: Optimal Room Mix Marketing Decisions",
+   "f": "1lJw8S42l0WP6YJCefElTMSiitUtXAp05"
+  },
+  {
+   "s": [
+    9,
+    10
+   ],
+   "t": "Reading: How Predictive Analytics Can Help Set Perfect Hotel Room Prices | CIO",
+   "f": "1TLe2zLlS0tg1LMhODCixrVnIXOUjCPxs"
+  }
+ ],
+ "SPFDF": [
+  {
+   "s": [
+    1,
+    2
+   ],
+   "t": "Case: GE's Digital Revolution: Redefining the E in GE",
+   "f": "1H100zyl718KxEcb_bzRtAhKqzesyK0YK"
+  },
+  {
+   "s": [
+    3
+   ],
+   "t": "Case: Mom & Me becomes BabyOye",
+   "f": "1Sh-dd5rok_NMgkyHQDvG6At8WIaclwgN"
+  },
+  {
+   "s": [
+    3
+   ],
+   "t": "Reading: Get the Right Mix of Bricks and Clicks",
+   "f": "1d1sVbPMMvTz2n1w57lo8KPdIzbT4jIon"
+  },
+  {
+   "s": [
+    4,
+    5
+   ],
+   "t": "Case: Indian Software Industry 2005-09",
+   "f": "1Zgccm_6S6HSJoDFXOjH5adWbGUZ3F2tk"
+  },
+  {
+   "s": [
+    4,
+    5
+   ],
+   "t": "Reading: Competitive Advantages of the Latecomer Firm",
+   "f": "1R0hbFlj5rpqaG0S734ACpEB5Qv_GhIst"
+  },
+  {
+   "s": [
+    6
+   ],
+   "t": "Case: Don't Underestimate the Power of a Common Man",
+   "f": "1GCN_6jH9GGe9XxD3s7fCfzF6GyEExDnS"
+  },
+  {
+   "s": [
+    6
+   ],
+   "t": "Reading: Gladwell on Tie Strength, The New Yorker (2010)",
+   "f": "1sq55yH84EpvuQs2IZmc_453HXPK-hRVY"
+  },
+  {
+   "s": [
+    7,
+    8
+   ],
+   "t": "Case: OTAs in India (Gunta et al., 2012)",
+   "f": "1oBLAvtWIxiXAX4Q7Xy2H5A-dyFaDFzSV"
+  },
+  {
+   "s": [
+    7,
+    8
+   ],
+   "t": "Reading: Do You Really Want to Be an eBay",
+   "f": "1ovVHfU1CKfXqCzRKku4Kk4aVb32NDv6I"
+  }
+ ]
+}

@@ -656,6 +656,7 @@ const SECTIONS=__SECTIONS__;
 const CLASSES=__CLASSES__;
 const EVENTS=__EVENTS__;
 const OUTLINES=__OUTLINES__;
+const OUTLINE_PDFS=__OUTLINE_PDFS__;
 const READINGS=__READINGS__;
 function outlineUrl(code){if(!OUTLINES[code])return "";const d="https://drive.google.com/drive/folders/"+OUTLINES[code];return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent(d)}
 function driveFile(id){return "https://accounts.google.com/AccountChooser?continue="+encodeURIComponent("https://drive.google.com/file/d/"+id+"/view")}
@@ -1101,12 +1102,11 @@ function buildClasses(root,roll,myExams){
           al.onclick=()=>setAlarm(k);acts.append(al)}
       }
       const ou=outlineUrl(code);
-      if(ou){acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
-      }
+      if(ou)acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
       const body=el("div",{},nm,el("div",{class:"meta"},"Session "+k.n+", "+c[1]));
       const rd=readingsFor(code,k.n);
       if(rd.length){
-        const d=el("details",{class:"rd"},el("summary",{},rd.length+" reading"+(rd.length>1?"s":"")+" and cases"));
+        const d=el("details",{class:"rd"},el("summary",{},(()=>{const nc=rd.filter(r=>/^Case/.test(r.t)).length,nr=rd.length-nc,p=(n,w)=>n+" "+w+(n>1?"s":"");return [nc?p(nc,"case"):"",nr?p(nr,"reading"):""].filter(Boolean).join(" and ")})()));
         const ul=el("ul",{});
         rd.forEach(r=>ul.append(el("li",{},r.f?el("a",{href:driveFile(r.f),target:"_blank",rel:"noopener"},r.t):r.t)));
         d.append(ul);
@@ -1199,6 +1199,7 @@ function render(roll){
     const acts=el("div",{class:"acts"});
     const ou=outlineUrl(code);
     if(ou)acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
+    if(OUTLINE_PDFS[code])acts.append(el("a",{class:"add",href:driveFile(OUTLINE_PDFS[code]),target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course outline"},"Outline"));
     // A course with per-section groups but no published section list (Man and Machine) offers both.
     const both=!link&&(!sec||sec==="AB")&&LINKS[code+"-A"]&&LINKS[code+"-B"];
     if(link)acts.append(el("a",{class:"btn wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join group"));

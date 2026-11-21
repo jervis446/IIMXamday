@@ -3,6 +3,7 @@ from exams import C
 OUT=os.environ.get('OUT','site')
 EXAMS=json.load(open('exams.json'))
 OUTLINES=json.load(open('outlines.json'))
+OUTLINE_PDFS=json.load(open('outline_pdfs.json'))
 try: JOBS=json.load(open('../data/jobs.json'))
 except Exception: JOBS=[]
 try: ACCESS=json.load(open('access.json'))
@@ -100,6 +101,7 @@ if __name__=='__main__':
               .replace('__JOB_FORM__',json.dumps(JOB_FORM))
               .replace('__READINGS__',json.dumps(READINGS,ensure_ascii=False,separators=(',',':')))
               .replace('__OUTLINES__',json.dumps(OUTLINES,separators=(',',':')))
+              .replace('__OUTLINE_PDFS__',json.dumps(OUTLINE_PDFS,separators=(',',':')))
               .replace('__EVENTS__',json.dumps(EVENTS,ensure_ascii=False,separators=(',',':')))
               .replace('__CLASSES__',json.dumps(CLASSES,separators=(',',':')))
               .replace('__SECTIONS__',json.dumps(sections,separators=(',',':')))
