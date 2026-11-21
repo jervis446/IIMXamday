@@ -83,7 +83,12 @@ def parse(rows):
     return classes,ex,events
 if __name__=='__main__':
     src=sys.argv[1] if len(sys.argv)>1 else '../data/schedule.json'
-    rows=json.load(open(src))['rows']
+    data=json.load(open(src))
+    if 'Term VI' not in data.get('sheet',''):
+        # The old Apps Script still pushes the Term V sheet each morning; keep the last good Term VI parse.
+        print('ignoring schedule from',repr(data.get('sheet')),'- not Term VI; classes.json left as is',file=sys.stderr)
+        sys.exit(0)
+    rows=data['rows']
     classes,exams,events=parse(rows)
     try:
         camp=json.load(open('campus.json'))

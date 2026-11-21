@@ -1139,7 +1139,11 @@ function render(roll){
     const acts=el("div",{class:"acts"});
     const ou=outlineUrl(code);
     if(ou)acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
-    acts.append(link?el("a",{class:"btn wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join group"):el("span",{class:"btn wa off","aria-disabled":"true"},"Group will be added soon"));
+    // A course with per-section groups but no published section list (Man and Machine) offers both.
+    const both=!link&&(!sec||sec==="AB")&&LINKS[code+"-A"]&&LINKS[code+"-B"];
+    if(link)acts.append(el("a",{class:"btn wa",href:link,target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" WhatsApp group"},WA_ICON(),"Join group"));
+    else if(both)["A","B"].forEach(s=>acts.append(el("a",{class:"btn wa",href:LINKS[code+"-"+s],target:"_blank",rel:"noopener","aria-label":"Join "+c[0]+" Section "+s+" WhatsApp group"},WA_ICON(),"Sec "+s+" group")));
+    else acts.append(el("span",{class:"btn wa off","aria-disabled":"true"},"Group will be added soon"));
     li.append(acts);
     cl.append(li)});
   coP.append(cl);
