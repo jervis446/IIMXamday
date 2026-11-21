@@ -510,7 +510,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
 .support .sup-ico,#supportNudge .sn-ico{background:var(--grad);box-shadow:0 10px 22px rgba(236,72,153,.35)}
 .support .custom .btn{background:var(--grad);border:0}
 .sn-amts button{background:var(--brand-soft);color:var(--brand)}
-#supportNudge,dialog#pay{background:var(--bg);border-radius:26px}
+#supportNudge,dialog#pay,dialog.help{background:var(--bg);border-radius:26px}
 .toast{background:var(--grad);color:#fff}
 .heart{color:var(--g2)}
 .ig{text-decoration-color:var(--g2)}
@@ -547,6 +547,17 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
 .person.vip .name{font-weight:800}
 .person.vip .name+.meta{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
 .tag.vipt{background:var(--grad);color:#fff;border:0;font-weight:700}
+dialog.help{border:1px solid var(--line);border-radius:26px;background:var(--bg);color:var(--ink);padding:22px;
+  width:min(92vw,440px);max-height:88vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog.help::backdrop{background:rgba(0,0,0,.45)}
+dialog.help h2{margin:0 30px 6px 0;font-size:19px}
+dialog.help h3{margin:16px 0 6px;font-size:15px}
+dialog.help ol{margin:0;padding-left:20px;line-height:1.55}
+dialog.help details{border-top:1px solid var(--line);padding:10px 0}
+dialog.help summary{cursor:pointer;font-weight:600}
+dialog.help details p{margin:8px 0 0;color:var(--muted);line-height:1.5}
+dialog.help .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.footlink{background:none;border:0;padding:0;color:inherit;font:inherit;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -597,11 +608,41 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
     <p class="sn-credit">by Adarsh &middot; <a href="https://asanoha.co.in" target="_blank" rel="noopener">Asanoha</a></p>
   </dialog>
 
+  <dialog id="installDlg" class="help" aria-labelledby="inst-h">
+    <form method="dialog" class="x"><button aria-label="Close">&#x2715;</button></form>
+    <h2 id="inst-h">Install IIMXamday</h2>
+    <p class="note">It installs from the browser in about 10 seconds. No app store, under 1 MB.</p>
+    <div class="row" id="instRow" hidden><button type="button" class="btn" id="instNow">Install now</button></div>
+    <div class="row"><a class="btn" href="install.html">Open the one-tap download page</a></div>
+    <h3>Android</h3>
+    <ol><li>Open this link in Chrome.</li><li>Tap Install now above, or open the &#8942; menu and choose Install app (some phones say Add to Home screen).</li><li>Open IIMXamday from your home screen and sign in once.</li></ol>
+    <h3>iPhone</h3>
+    <ol><li>Open this link in Safari. Chrome and in-app browsers on iPhone can&rsquo;t install it.</li><li>Tap the Share button at the bottom of the screen.</li><li>Scroll down, tap Add to Home Screen, then Add.</li></ol>
+    <div class="row"><button type="button" class="btn ghost" id="instCopy">Copy install link</button></div>
+    <h3>Questions</h3>
+    <details><summary>What changes after installing?</summary><p>IIMXamday gets its own icon and opens full screen without the browser bar. You stay signed in, and the schedule loads faster because it is saved on the phone.</p></details>
+    <details><summary>Does it work without internet?</summary><p>The schedule you last opened stays readable offline. New timetable changes, jobs and calendar sync need a connection.</p></details>
+    <details><summary>How do I get a reminder before class?</summary><p>Subscribe from the Classes tab. Apple Calendar alerts you 5 minutes before each class. In Google Calendar, set that calendar&rsquo;s default notification to 5 minutes, since Google ignores reminders in subscribed calendars. On iPhone, the Alarm button on a class sets a Clock alarm 5 minutes early after a one-time setup.</p></details>
+    <details><summary>Why can&rsquo;t the website ring a real alarm on Android?</summary><p>Android doesn&rsquo;t let websites open the Clock app with a time filled in. Calendar notifications are the closest option until there is a Play Store app.</p></details>
+    <details><summary>I opened the link from WhatsApp or Instagram and see no install option.</summary><p>Those apps sometimes open links in their own browser. Use the menu to open the page in Chrome or Safari, then follow the steps above.</p></details>
+    <details><summary>How do I remove it?</summary><p>Long-press the icon. Choose Uninstall on Android or Remove App on iPhone. Nothing else is left behind.</p></details>
+  </dialog>
+  <dialog id="alarmDlg" class="help" aria-labelledby="al-h">
+    <form method="dialog" class="x"><button aria-label="Close">&#x2715;</button></form>
+    <h2 id="al-h">Class alarm on iPhone</h2>
+    <p class="note" id="alarmFor"></p>
+    <p>iPhone only lets websites set alarms through a Shortcut. Make it once and every Alarm button works after that.</p>
+    <ol><li>Open the Shortcuts app and tap + to make a new shortcut.</li><li>Search for the Create Alarm action and add it.</li><li>Tap the time in that action and choose Shortcut Input. If it asks what input to receive, choose Text.</li><li>Set the label to Class, then rename the shortcut to IIMXamday Alarm, spelled exactly like that.</li><li>Tap Done and come back here.</li></ol>
+    <p class="note">Shortcuts may ask for permission the first time it runs. Alarms ring on the next matching time, so set them on the day of the class.</p>
+    <div class="row"><button type="button" class="btn" id="alarmGo">I&rsquo;ve made it, set the alarm</button><a class="btn ghost" href="shortcuts://">Open Shortcuts</a></div>
+  </dialog>
+
   <footer>
     <p class="made"><a class="ig" href="https://claude.ai/artifact/VXVwu8LJo1evJ1mLV2cFK2" target="_blank" rel="noopener">Privacy</a> &middot; <a class="ig" href="https://claude.ai/artifact/JUZgpjTXuLsxTpxm32znEH" target="_blank" rel="noopener">Terms</a> &middot; Made with <span class="heart" aria-label="love">&#10084;</span> by <a class="ig" href="https://www.instagram.com/____a.d.a.r.s.h____/" target="_blank" rel="noopener">Adarsh</a></p>
     <p class="byline">Founder &amp; CEO, <a class="asanoha" href="https://asanoha.co.in" target="_blank" rel="noopener">Asanoha</a></p>
     <p id="installRow" class="install" hidden><button type="button" id="installBtn" class="btn ghost">Install app</button></p>
     <p id="iosHint" hidden>On iPhone, tap Share, then Add to Home Screen to install this app.</p>
+    <p><a class="ig" href="install.html">Download the app</a> &middot; <button type="button" class="footlink" id="howInstall">Install help</button></p>
     Schedule data last changed 21 Nov 2026, 12:27 PM IST. Exam dates are tentative, as published in the Term VI schedule. Calendar events are 75 minutes, matching one session slot. Where the schedule gives no start time, the Session I slot (9:00 AM) is used and marked. All times are IST.
   </footer>
 </main>
@@ -974,7 +1015,7 @@ function icsFor(list,roll){
   const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//IIMXamday//Classes//EN","CALSCALE:GREGORIAN","METHOD:PUBLISH"];
   list.forEach(k=>L.push("BEGIN:VEVENT","UID:"+k.id+"-"+roll+"@iimxamday","DTSTAMP:"+now,
     "DTSTART:"+utcStamp(clsStart(k)),"DTEND:"+utcStamp(clsEnd(k)),"SUMMARY:"+icsEsc(clsTitle(k)),"DESCRIPTION:"+icsEsc(clsDetails(k)),
-    "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:"+icsEsc(clsTitle(k)+" in 10 minutes"),"TRIGGER:-PT10M","END:VALARM","END:VEVENT"));
+    "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:"+icsEsc(clsTitle(k)+" in 5 minutes"),"TRIGGER:-PT5M","END:VALARM","END:VEVENT"));
   L.push("END:VCALENDAR");return L.join("\r\n")+"\r\n";
 }
 function saveIcs(list,roll,name){
@@ -985,6 +1026,16 @@ function saveIcs(list,roll,name){
     setTimeout(()=>URL.revokeObjectURL(url),10000);
     toast(list.length>1?"Calendar file with "+list.length+" classes ready":"Calendar file ready");
   }catch(_){toast("Could not create the calendar file here")}
+}
+const IS_IOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+function alarmTime(k){return new Date(clsStart(k).getTime()-5*60000).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Kolkata"})}
+function runAlarm(k){location.href="shortcuts://run-shortcut?name="+encodeURIComponent("IIMXamday Alarm")+"&input=text&text="+encodeURIComponent(alarmTime(k))}
+function setAlarm(k){
+  let ready=false;try{ready=localStorage.getItem("t5alarm")==="1"}catch(_){}
+  if(ready){runAlarm(k);return}
+  const d=$("#alarmDlg");$("#alarmFor").textContent=clsTitle(k)+" starts at "+fmtTime(k.s)+". The alarm will ring at "+alarmTime(k)+".";
+  $("#alarmGo").onclick=()=>{try{localStorage.setItem("t5alarm","1")}catch(_){}d.close();runAlarm(k)};
+  d.showModal();
 }
 function niceDay(d,long){return new Date(d+"T12:00:00+05:30").toLocaleDateString("en-IN",{weekday:long?"long":"short",day:"numeric",month:long?"long":"short",timeZone:"Asia/Kolkata"})}
 
@@ -1027,7 +1078,7 @@ function buildClasses(root,roll,myExams){
       gg.onclick=()=>{window.open(gcalClass(set[step]),"_blank","noopener");step++;
         if(step<set.length){gg.textContent="Add next to Google ("+(step+1)+" of "+set.length+")"}else{gg.textContent="All "+set.length+" sent to Google";gg.disabled=true}};
       row.append(ap,gg);bar.append(row);
-      bar.append(el("p",{class:"note"},(upcoming.length&&upcoming.length<dayCls.length?"Classes already over today are skipped. ":"")+"Google opens one class at a time, so tap Save in Google and come back for the next. The Apple file also works in Outlook, and adds a reminder 10 minutes before each class."));
+      bar.append(el("p",{class:"note"},(upcoming.length&&upcoming.length<dayCls.length?"Classes already over today are skipped. ":"")+"Google opens one class at a time, so tap Save in Google and come back for the next. The Apple file also works in Outlook, and adds a reminder 5 minutes before each class."));
       body.append(bar);
     }
     const ol=el("ol",{class:"list"});
@@ -1046,6 +1097,8 @@ function buildClasses(root,roll,myExams){
         acts.append(el("a",{class:"add",href:gcalClass(k),target:"_blank",rel:"noopener","aria-label":"Add "+c[0]+" class to Google Calendar"},"Google"));
         const b=el("button",{type:"button",class:"add","aria-label":"Add "+c[0]+" class to Apple Calendar"},"Apple");
         b.onclick=()=>saveIcs([k],roll,code.toLowerCase()+"-class-"+k.n);acts.append(b);
+        if(IS_IOS&&k.d===today){const al=el("button",{type:"button",class:"add","aria-label":"Set a Clock alarm 5 minutes before the "+c[0]+" class"},"Alarm");
+          al.onclick=()=>setAlarm(k);acts.append(al)}
       }
       const ou=outlineUrl(code);
       if(ou){acts.append(el("a",{class:"add",href:ou,target:"_blank",rel:"noopener","aria-label":"Open the "+c[0]+" course folder in Drive"},"Folder"));
@@ -1070,7 +1123,8 @@ function buildClasses(root,roll,myExams){
       body.append(el("div",{class:"sub-box",style:"margin-top:24px"},el("h2",{},"Every class, auto-updating"),
         el("p",{},"Subscribe once to get all "+mine.length+" of your classes. Changes to the timetable reach your calendar on their own."),
         el("div",{class:"row"},el("a",{class:"btn ghost",href:"https://calendar.google.com/calendar/r?cid="+encodeURIComponent(webcal),target:"_blank",rel:"noopener"},"Google Calendar"),
-          el("a",{class:"btn ghost",href:webcal},"iPhone or Mac"))));
+          el("a",{class:"btn ghost",href:webcal},"iPhone or Mac")),
+        el("p",{class:"note"},"Apple Calendar alerts you 5 minutes before each class. Google Calendar drops reminders from subscribed calendars, so open Google Calendar settings, pick this calendar and set its default notification to 5 minutes."+(IS_IOS?" To get a ringing alarm instead, tap Alarm on a class on the day it happens.":""))));
     }
   }
   draw();
@@ -1308,15 +1362,23 @@ window.addEventListener("pageshow",()=>maybeNudge());
 (function(){
   const hosted=location.protocol==="https:" && !/claude/.test(location.hostname);
   if(!hosted) return;
+  // (install dialog wiring is below, outside the hosted check)
   const add=(rel,href)=>{const l=document.createElement("link");l.rel=rel;l.href=href;document.head.append(l)};
   add("manifest","manifest.webmanifest");add("apple-touch-icon","icons/apple-touch-icon.png");
   if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
   let deferred=null;
-  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#installRow").hidden=false});
-  $("#installBtn").addEventListener("click",async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("#installRow").hidden=true});
-  window.addEventListener("appinstalled",()=>{$("#installRow").hidden=true;toast("App installed")});
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#installRow").hidden=false;$("#instRow").hidden=false});
+  const doInstall=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("#installRow").hidden=true;$("#instRow").hidden=true};
+  $("#installBtn").addEventListener("click",doInstall);$("#instNow").addEventListener("click",doInstall);
+  window.addEventListener("appinstalled",()=>{$("#installRow").hidden=true;$("#instRow").hidden=true;toast("App installed")});
   const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
   if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!standalone) $("#iosHint").hidden=false;
+})();
+(function(){
+  const dlg=$("#installDlg");
+  $("#howInstall").onclick=()=>dlg.showModal();
+  $("#instCopy").onclick=async()=>{const u=new URL("install.html",location.href).href;try{await navigator.clipboard.writeText(u);toast("Install link copied")}catch(_){prompt("Copy this install link",u)}};
+  if(/[?&]install\b/.test(location.search)||location.hash==="#install")dlg.showModal();
 })();
 try{const s=JSON.parse(localStorage.getItem("t5session")||"null");if(s&&s.roll)signIn(s.roll,s.phone,true)}catch(_){}
 </script>

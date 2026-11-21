@@ -19,8 +19,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -35,8 +35,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -51,8 +51,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -66,8 +66,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 1\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -82,8 +82,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -97,8 +97,8 @@ DESCRIPTION:Crisis Communication and Management\, session 1\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -112,8 +112,8 @@ DESCRIPTION:Crisis Communication and Management\, session 2\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -127,8 +127,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 2\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -143,8 +143,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -159,8 +159,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -174,8 +174,8 @@ DESCRIPTION:Crisis Communication and Management\, session 3\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -189,8 +189,8 @@ DESCRIPTION:Crisis Communication and Management\, session 4\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -204,8 +204,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 3\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -220,8 +220,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -235,8 +235,8 @@ DESCRIPTION:Crisis Communication and Management\, session 5\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -250,8 +250,8 @@ DESCRIPTION:Crisis Communication and Management\, session 6\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -265,8 +265,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 4\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -281,8 +281,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -297,8 +297,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 2
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -313,8 +313,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -328,8 +328,8 @@ DESCRIPTION:Crisis Communication and Management\, session 7\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -344,8 +344,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -360,8 +360,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -375,8 +375,8 @@ DESCRIPTION:Crisis Communication and Management\, session 8\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -391,8 +391,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -407,8 +407,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 3
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -423,8 +423,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 4
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -439,8 +439,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -454,8 +454,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 5\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -470,8 +470,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -485,8 +485,8 @@ DESCRIPTION:Simulation (Section A)\, session 1\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -500,8 +500,8 @@ DESCRIPTION:Simulation (Section A)\, session 2\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -516,8 +516,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -532,8 +532,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 5
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -548,8 +548,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 6
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -563,8 +563,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 1\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -578,8 +578,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 2\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -593,8 +593,8 @@ DESCRIPTION:Simulation (Section B)\, session 1\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 1 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 1 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -608,8 +608,8 @@ DESCRIPTION:Simulation (Section B)\, session 2\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 2 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 2 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -624,8 +624,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -639,8 +639,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 6\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -655,8 +655,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -671,8 +671,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -686,8 +686,8 @@ DESCRIPTION:Simulation (Section A)\, session 3\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -701,8 +701,8 @@ DESCRIPTION:Simulation (Section A)\, session 4\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -717,8 +717,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -732,8 +732,8 @@ DESCRIPTION:Simulation (Section B)\, session 3\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -747,8 +747,8 @@ DESCRIPTION:Simulation (Section B)\, session 4\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -762,8 +762,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 7\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -778,8 +778,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  , IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -794,8 +794,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 7
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -810,8 +810,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 8
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -825,8 +825,8 @@ DESCRIPTION:Simulation (Section A)\, session 5\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -840,8 +840,8 @@ DESCRIPTION:Simulation (Section A)\, session 6\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -856,8 +856,8 @@ DESCRIPTION:Consumer Behaviour in Digital and AI-Driven Marketplace\, ses
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CBAI class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CBAI class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -872,8 +872,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 9
  Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -888,8 +888,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -904,8 +904,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -919,8 +919,8 @@ DESCRIPTION:Simulation (Section B)\, session 5\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -934,8 +934,8 @@ DESCRIPTION:Simulation (Section B)\, session 6\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -950,8 +950,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 11 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 11 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -966,8 +966,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 12 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 12 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -981,8 +981,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 8\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -996,8 +996,8 @@ DESCRIPTION:Simulation (Section A)\, session 7\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1011,8 +1011,8 @@ DESCRIPTION:Simulation (Section A)\, session 8\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1026,8 +1026,8 @@ DESCRIPTION:Crisis Communication and Management\, session 9\nProf. N R Bh
  argav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1042,8 +1042,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 13 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 13 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1058,8 +1058,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 14 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 14 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1073,8 +1073,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 3\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 3 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 3 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1088,8 +1088,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 4\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 4 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 4 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1103,8 +1103,8 @@ DESCRIPTION:Simulation (Section B)\, session 8\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1118,8 +1118,8 @@ DESCRIPTION:Simulation (Section B)\, session 8\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1133,8 +1133,8 @@ DESCRIPTION:Crisis Communication and Management\, session 10\nProf. N R B
  hargav\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CCM class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CCM class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1149,8 +1149,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 15 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 15 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1165,8 +1165,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 16 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 16 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1180,8 +1180,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 9\nProf
  . D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1195,8 +1195,8 @@ DESCRIPTION:Entrepreneurship Orientation and Innovation\, session 10\nPro
  f. D. L. Sunder\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EOI class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:EOI class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1210,8 +1210,8 @@ DESCRIPTION:Simulation (Section A)\, session 9\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1225,8 +1225,8 @@ DESCRIPTION:Simulation (Section A)\, session 10\nFaculty to be announced\
  nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM A class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM A class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1241,8 +1241,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 17 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 17 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1257,8 +1257,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 18 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 18 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1273,8 +1273,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1288,8 +1288,8 @@ DESCRIPTION:Simulation (Section B)\, session 9\nFaculty to be announced\n
  Term VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1303,8 +1303,8 @@ DESCRIPTION:Simulation (Section B)\, session 10\nFaculty to be announced\
  nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SIM B class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SIM B class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1319,8 +1319,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 1
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 19 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 19 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1335,8 +1335,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 2
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 20 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 20 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1351,8 +1351,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1367,8 +1367,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 2
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 21 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 21 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1383,8 +1383,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 2
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 22 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 22 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1399,8 +1399,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1415,8 +1415,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 2
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 23 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 23 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1431,8 +1431,8 @@ DESCRIPTION:Man and Machine: Managing Human-AI Collaborations\, session 2
   Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:MM class 24 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:MM class 24 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1446,8 +1446,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 5\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 5 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 5 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1461,8 +1461,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 6\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 6 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 6 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1477,8 +1477,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1493,8 +1493,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  \, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1509,8 +1509,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1525,8 +1525,8 @@ DESCRIPTION:Change Management and Organizational Development (Section A)\
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:CMOD A class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:CMOD A class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1540,8 +1540,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 7\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 7 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 7 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1555,8 +1555,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 8\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 8 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 8 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1570,8 +1570,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 9\nProf. Sw
  atantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1585,8 +1585,8 @@ DESCRIPTION:Strategic Communication Across Cultures\, session 10\nProf. S
  watantra\nTerm VI online class\, EMP MMS Batch 02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SCAC class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SCAC class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1601,8 +1601,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  2\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 9 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 9 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1617,8 +1617,8 @@ DESCRIPTION:Strategic Perspectives For The Digital Frontier (Section A)\,
  02\, IIM Indore.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:SPFDF A class 10 in 10 minutes
-TRIGGER:-PT10M
+DESCRIPTION:SPFDF A class 10 in 5 minutes
+TRIGGER:-PT5M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

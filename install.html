@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Get IIMXamday</title>
+<meta name="description" content="Install IIMXamday on your phone: Term VI classes, exams and reminders for EMP MMS Batch 02, IIM Indore.">
+<meta name="theme-color" content="#7C3AED">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IIMXamday">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#7C3AED;--g2:#EC4899;--g3:#F97316;--grad:linear-gradient(120deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%);
+  --bg:#FBF7FF;--panel:#FFFFFF;--ink:#1A1033;--muted:#6E6488;--line:rgba(124,58,237,.16);--brand:#7C3AED;--soft:#EFE7FE;
+  --font:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0716;--panel:#170F2B;--ink:#F6F2FF;--muted:#A99DC8;--line:rgba(196,167,255,.18);--brand:#C4A7FF;--soft:#2A1B4D}}
+:root[data-theme="dark"]{--bg:#0B0716;--panel:#170F2B;--ink:#F6F2FF;--muted:#A99DC8;--line:rgba(196,167,255,.18);--brand:#C4A7FF;--soft:#2A1B4D}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);min-height:100vh;
+  background-image:radial-gradient(60% 40% at 15% 0%,rgba(124,58,237,.18),transparent 70%),radial-gradient(50% 35% at 100% 10%,rgba(236,72,153,.14),transparent 70%)}
+main{max-width:440px;margin:0 auto;padding:48px 16px 40px;text-align:center}
+.icon{width:96px;height:96px;border-radius:24px;box-shadow:0 18px 40px rgba(124,58,237,.35)}
+h1{margin:20px 0 6px;font-size:30px;font-weight:800;letter-spacing:-.02em}
+h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:0 0 26px;color:var(--muted);line-height:1.5}
+.cta{display:block;width:100%;border:0;border-radius:18px;padding:18px;font:800 18px var(--font);color:#fff;background:var(--grad);
+  box-shadow:0 14px 30px rgba(236,72,153,.32);cursor:pointer;text-decoration:none}
+.cta:disabled{opacity:.55;cursor:default}
+.cta.ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line);box-shadow:none;font-size:16px;padding:14px;margin-top:10px}
+.meta{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.card{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px 18px 8px;text-align:left}
+.card h2{margin:0 0 10px;font-size:16px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;padding:0 0 14px;line-height:1.45}
+.steps li::before{content:counter(s);flex:0 0 28px;height:28px;border-radius:50%;background:var(--soft);color:var(--brand);
+  font-weight:800;display:grid;place-items:center;font-size:14px}
+.ok{font-size:44px;line-height:1}
+.arrow{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font-size:34px;color:var(--g2);animation:b 1.2s infinite}
+@keyframes b{50%{transform:translate(-50%,-8px)}}
+@media (prefers-reduced-motion:reduce){.arrow{animation:none}}
+footer{margin-top:28px;font-size:13px;color:var(--muted)}
+footer a{color:inherit}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="icons/icon-192.png" alt="IIMXamday app icon" width="96" height="96">
+  <h1>Get <span>IIMXamday</span></h1>
+  <p class="sub">Your Term VI classes, exams, readings and reminders in one app. EMP MMS Batch 02, IIM Indore.</p>
+
+  <!-- Android, desktop Chrome and Edge: one button -->
+  <div id="vPrompt" hidden>
+    <button type="button" class="cta" id="dl">Download app</button>
+    <p class="meta">Free. Under 1 MB. No Play Store needed.</p>
+  </div>
+
+  <!-- waiting for the browser to allow install -->
+  <div id="vWait">
+    <button type="button" class="cta" disabled>Getting ready&hellip;</button>
+  </div>
+
+  <!-- installed -->
+  <div id="vDone" hidden>
+    <div class="ok" aria-hidden="true">&#127881;</div>
+    <h2>Installed</h2>
+    <p class="sub">Find IIMXamday on your home screen and sign in once with your roll number.</p>
+    <a class="cta" href="./">Open IIMXamday</a>
+  </div>
+
+  <!-- inside WhatsApp, Instagram, LinkedIn etc. on Android -->
+  <div id="vInApp" hidden>
+    <a class="cta" id="openChrome" href="#">Open in Chrome to download</a>
+    <p class="meta">This app's built-in browser can't install apps. Chrome can.</p>
+  </div>
+
+  <!-- iPhone -->
+  <div id="vIos" hidden>
+    <button type="button" class="cta" id="iosBtn">Download app</button>
+    <div class="card" id="iosSteps" hidden>
+      <h2>Two taps left. Apple requires these on iPhone.</h2>
+      <ol class="steps">
+        <li><span>Tap the Share button <b>&#x2191;&#xFE0E;</b> in Safari's bottom bar.</span></li>
+        <li><span>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</span></li>
+      </ol>
+    </div>
+    <div class="arrow" id="iosArrow" aria-hidden="true" hidden>&#8595;</div>
+  </div>
+
+  <!-- iPhone, not Safari -->
+  <div id="vIosOther" hidden>
+    <button type="button" class="cta" id="copyLink">Copy link for Safari</button>
+    <p class="meta">On iPhone, apps like this install only from Safari. Copy the link, open Safari, paste it and tap Download app.</p>
+  </div>
+
+  <!-- browsers that can't prompt (Firefox, Samsung with prompt off, already installed) -->
+  <div id="vManual" hidden>
+    <div class="card">
+      <h2>Install from the browser menu</h2>
+      <ol class="steps">
+        <li><span>Open the browser menu (&#8942; or &#9776;).</span></li>
+        <li><span>Tap <b>Install app</b> or <b>Add to Home screen</b>.</span></li>
+      </ol>
+    </div>
+    <a class="cta ghost" href="./">Or keep using it in the browser</a>
+  </div>
+
+  <footer><a href="./">Open the website instead</a> &middot; by <a href="https://www.instagram.com/____a.d.a.r.s.h____/" target="_blank" rel="noopener">Adarsh</a></footer>
+</main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const views=["vPrompt","vWait","vDone","vInApp","vIos","vIosOther","vManual"];
+  const show=v=>views.forEach(x=>$(x).hidden=x!==v);
+  const ua=navigator.userAgent;
+  const ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1&&!/android/i.test(ua));
+  const android=/android/i.test(ua);
+  const inApp=/FBAN|FBAV|Instagram|WhatsApp|LinkedInApp|Line\/|Snapchat|; wv\)/i.test(ua);
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  const appUrl=new URL("./",location.href).href;
+
+  if("serviceWorker" in navigator&&isSecureContext)navigator.serviceWorker.register("sw.js").catch(()=>{});
+
+  if(standalone){show("vDone");return}
+
+  if(ios){
+    const safari=/Safari/i.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|GSA|Instagram|FBAN|FBAV|WhatsApp|LinkedInApp/i.test(ua);
+    if(!safari){
+      show("vIosOther");
+      $("copyLink").onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$("copyLink").textContent="Link copied. Now open Safari"}catch(_){prompt("Copy this link and open it in Safari",location.href)}};
+      return;
+    }
+    show("vIos");
+    $("iosBtn").onclick=()=>{$("iosSteps").hidden=false;$("iosArrow").hidden=false;$("iosBtn").hidden=true};
+    return;
+  }
+
+  if(android&&inApp){
+    const u=new URL(location.href);
+    $("openChrome").href="intent://"+u.host+u.pathname+u.search+"#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent(location.href)+";end";
+    show("vInApp");return;
+  }
+
+  let deferred=null;
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;show("vPrompt")});
+  window.addEventListener("appinstalled",()=>show("vDone"));
+  $("dl").onclick=async()=>{
+    if(!deferred)return;
+    deferred.prompt();
+    const r=await deferred.userChoice.catch(()=>({outcome:"dismissed"}));
+    deferred=null;
+    if(r.outcome==="accepted")show("vDone");
+    else{$("dl").textContent="Try again";setTimeout(()=>{if(!deferred)show("vManual")},1500)}
+  };
+  // If the browser never offers the prompt, it is either already installed or doesn't support one-tap install.
+  setTimeout(async()=>{
+    if(deferred||$("vWait").hidden)return;
+    try{if(navigator.getInstalledRelatedApps){const a=await navigator.getInstalledRelatedApps();if(a.length){show("vDone");return}}}catch(_){}
+    show("vManual");
+  },6000);
+})();
+</script>
+</body>
+</html>

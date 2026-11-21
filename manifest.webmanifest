@@ -1,7 +1,7 @@
 {
  "name": "IIMXamday",
  "short_name": "IIMXamday",
- "description": "IIMXamday: Term V exam dates for EMP MMS Batch 02, IIM Indore, synced to your calendar",
+ "description": "IIMXamday: Term VI classes, exams and reminders for EMP MMS Batch 02, IIM Indore",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",

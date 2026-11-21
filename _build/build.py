@@ -67,7 +67,7 @@ def class_ics(cls,name,key):
         L+=['BEGIN:VEVENT',f"UID:{k['id']}-{key}@iimxamday",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
             f"DTSTART:{utc(k['d'],k['s'])}",'DTEND:'+utc(k['d'],k['e']),'SUMMARY:'+esc(title),'DESCRIPTION:'+esc(desc)]
         if k.get('room'): L.append('LOCATION:'+esc('IIM Indore, '+k['room']))
-        L+=['BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+esc(title+' in 10 minutes'),'TRIGGER:-PT10M','END:VALARM','END:VEVENT']
+        L+=['BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+esc(title+' in 5 minutes'),'TRIGGER:-PT5M','END:VALARM','END:VEVENT']
     for ev in EVENTS:
         L+=['BEGIN:VEVENT',f"UID:{ev['id']}-{key}@iimxamday",f'DTSTAMP:{stamp}',f'SEQUENCE:{SCHEDULE_VERSION}',
             f"DTSTART:{utc(ev['d'],ev['s'])}",'DTEND:'+utc(ev['d'],ev['e']),'SUMMARY:'+esc(ev['t']),
