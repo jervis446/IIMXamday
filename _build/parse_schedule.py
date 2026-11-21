@@ -100,6 +100,12 @@ if __name__=='__main__':
         k=dict(k); k['id']=f"{k['c'].lower()}-{k['n']}-{k['d']}"; k['campus']=1
         classes.append(k)
     classes.sort(key=lambda k:(k['d'],k['s'],k['c']))
+    # A repeated label on one day (the sheet has two "Simulation Sec B-8" on 31 Jan) would give two
+    # classes one calendar UID and calendar apps would merge them, so later copies get the slot appended.
+    seen=set()
+    for k in classes:
+        if k['id'] in seen: k['id']+=f"-s{k.get('slot','')}"
+        seen.add(k['id'])
     json.dump(classes,open('classes.json','w'),separators=(',',':'))
     json.dump(exams,open('exams.json','w'),indent=0)
     camp['events']=events
