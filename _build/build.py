@@ -18,6 +18,14 @@ students={r:sorted({c.split('-')[0] for c in v['c']}) for r,v in raw.items()}
 sections={r:sorted(v['c']) for r,v in raw.items()}
 links=json.load(open('links.json'))
 CLASSES=json.load(open('classes.json'))
+# Classes announced by email that the schedule sheet doesn't carry (FSA evening sessions). They survive the daily parse.
+try:
+    _have={(k['c'],k['n'],k['d']) for k in CLASSES}
+    for k in json.load(open('extra_classes.json')):
+        if (k['c'],k['n'],k['d']) in _have: continue
+        CLASSES.append(dict(k,id=f"{k['c'].lower()}-{k['n']}-{k['d']}"))
+    CLASSES.sort(key=lambda k:(k['d'],k['s'],k['c']))
+except FileNotFoundError: pass
 try: CAMPUS=json.load(open('campus.json'))
 except Exception: CAMPUS={'title':'','events':[]}
 EVENTS=CAMPUS.get('events',[])
